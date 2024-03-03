@@ -22,7 +22,7 @@ public class ProductoController {
     @GetMapping("ver/{idProducto}")
     public String mostarProducto(Producto producto, Model model) {
 
-        productoService.getProducto(producto);
+        producto = productoService.getProducto(producto);
         model.addAttribute("producto", producto);
 
         return "/producto/info";
@@ -46,7 +46,7 @@ public class ProductoController {
 
     @GetMapping("/modificar/{idProducto}")
     public String modificaProducto(Producto producto, Model model) {
-        productoService.getProducto(producto);
+        producto = productoService.getProducto(producto);
         model.addAttribute("producto", producto);
 
         return "/producto/modifica";
