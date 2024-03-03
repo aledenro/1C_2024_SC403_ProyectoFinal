@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/producto")
 public class ProductoController {
 
+    @Autowired
     private ProductoService productoService;
 
     @GetMapping("ver/{idProducto}")
@@ -30,8 +31,8 @@ public class ProductoController {
     @Autowired
     private FirebaseStorageService firebaseStorageService;
 
-    @PostMapping("/agregar")
-    public String agregarProducto(Producto producto, @RequestParam("imagenFile") MultipartFile imagenFile) {
+    @PostMapping("/guardar")
+    public String guardarProducto(Producto producto, @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
             productoService.save(producto);
             String rutaImagen = firebaseStorageService.cargaImagen(imagenFile, "productos", producto.getIdProducto());
