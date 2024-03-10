@@ -13,34 +13,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- *
  * @author valer
  */
 @Controller
-@RequestMapping("/personalizado/form")
+@RequestMapping("/personalizado")
 public class PersonalizadoController {
-    
+
     @Autowired
     private PersonalizadoService personalizadoService;
 
-    
+
     @Autowired
     private FirebaseStorageServiceImpl firebaseStorageServiceImpl;
-    
+
+    @GetMapping("verForm")
+    public String verForm() {
+        return "/personalizado/form";
+    }
+
+
     @PostMapping("/guardar")
     public String guardar(Personalizado pedidoP,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {
+                          @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
             // si no esta vacio se debe subir la imagen
             personalizadoService.save(pedidoP);
             String rutaImagen = firebaseStorageServiceImpl.cargaImagen(imagenFile, "pedidoPersonalizado", pedidoP.getIdPedidoP());
             pedidoP.setRutaImagen(rutaImagen);
-            
+
         }
         personalizadoService.save(pedidoP);
         return "redirect:/personalizado/form";
     }
-    
+
 //    @GetMapping("/modificar/{idProducto}")
 //    public String modifica(Producto producto, Model model) {
 //        producto = productoService.getProducto(producto);
