@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Cookies By Su</title>
+    </head>
+    <body>
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+        <section th:fragment="formPersonalizar">
+            <div class="container">
+                <div class="input-group row g-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Apellidos">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
+        <section th:fragment="listadoCategorias" id="categorias">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{categoria.listado}]]</h4>
+                            </div>
+                            <div th:if="${categorias != null and !categorias.empty}">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>[[#{categoria.descripcion}]]</th>
+                                            <th>[[#{categoria.activo}]]</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="categoria, contador : ${categorias}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${categoria.descripcion}]]</td>
+                                            <td
+                                                th:text="${categoria.activo} ? 'Activa' : 'Inactiva'"
+                                                />
+                                            <td>
+                                                <a
+                                                    th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
+                                                    class="btn btn-danger"
+                                                    >
+                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a
+                                                >
+                                                <a
+                                                    th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
+                                                    class="btn btn-success"
+                                                    >
+                                                    <i class="fas fa-pencil"></i>
+                                                    [[#{accion.actualizar}]]</a
+                                                >
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div
+                                class="text-center p-2"
+                                th:if="${categorias == null or categorias.empty}"
+                                >
+                                <span>[[#{lista.vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-success text-white mb-3">
+                            <div class="card-body">
+                                <h3>[[#{categoria.total}]]</h3>
+                                <h4 class="fs-2">
+                                    <i class="fas fa-users"></i> [[${totalCategorias}]]
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="productosDisplay" id="producto">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <p>[[${producto.nombreProducto}]]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/categoria/listado}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <a
+                            th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
+                            class="btn btn-danger"
+                            >
+                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+
