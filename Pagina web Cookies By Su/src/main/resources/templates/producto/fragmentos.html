@@ -160,10 +160,41 @@
     </section>
 
     <section th:fragment="productosDisplay" id="producto">
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <p>[[${producto.nombreProducto}]]</p>
+      <div class="container px-4">
+        <div class="row gx-5">
+          <div class="col">
+            <div class="p-3">
+              <img
+                th:src="@{${producto.rutaImagen}}"
+                class="rounded"
+                style="height: 500px"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="p-3">
+              <h2>[[${producto.nombreProducto}]]</h2>
+              <br />
+              <h5>[[${producto.precio}]]</h5>
+              <br />
+              <p>[[${producto.descripcion}]]</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <a
+            th:href="@{/producto/eliminar/}+${producto.idProducto}"
+            class="btn btn-danger"
+          >
+            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a
+          >
+          <a
+            th:href="@{/producto/modificar/}+${producto.idProducto}"
+            class="btn btn-success"
+          >
+            <i class="fas fa-pencil"></i>
+            [[#{accion.actualizar}]]</a
+          >
         </div>
       </div>
     </section>
