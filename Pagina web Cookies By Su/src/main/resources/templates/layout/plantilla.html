@@ -88,7 +88,11 @@
                     <div class="card-body">
                         <h5 class="card-title">[[${producto.nombreProducto}]]</h5>
                         <p class="card-text">[[${producto.descripcion}]]</p>
-                        <a th:href="@{/producto/ver/}+${producto.idProducto}" class="btn btn-primary">Ver Producto</a>
+                        <a
+                                th:href="@{/producto/ver/}+${producto.idProducto}"
+                                class="btn btn-primary"
+                        >Ver Producto</a
+                        >
                     </div>
                 </div>
             </div>
@@ -98,6 +102,22 @@
                 th:if="${productos == null or productos.empty}"
         >
             <span>[[#{lista.vacia}]]</span>
+        </div>
+    </div>
+</section>
+
+<section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a th:href="@{/producto/agregar}"
+                >
+                    <button type="button" class="btn btn-primary btn-block">
+                        <i class="fas fa-plus"></i> [[#{producto.agregar}]]
+                    </button>
+                </a
+                >
+            </div>
         </div>
     </div>
 </section>

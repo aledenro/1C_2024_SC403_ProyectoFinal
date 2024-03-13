@@ -41,7 +41,7 @@ public class ProductoController {
         }
         productoService.save(producto);
 
-        return "redirect: /";
+        return "redirect:/";
     }
 
     @GetMapping("/modificar/{idProducto}")
@@ -50,6 +50,18 @@ public class ProductoController {
         model.addAttribute("producto", producto);
 
         return "/producto/modifica";
+    }
+
+    @GetMapping("/agregar")
+    public String agregaProducto(Producto producto, Model model) {
+        return "/producto/agregarProducto";
+    }
+
+    @GetMapping("eliminar/{idProducto}")
+    public String eliminaProducto(Producto producto) {
+        productoService.delete(producto);
+
+        return "redirect:/";
     }
 
 }
