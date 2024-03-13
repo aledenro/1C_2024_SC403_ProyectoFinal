@@ -104,6 +104,47 @@
       </div>
   </section>
 
+  <section th:fragment="agregarProducto">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="card-header">
+            <h5>[[#{producto.agregar}]]</h5>
+        </div> 
+        <form th:action="@{/producto/guardar}" th:object="${producto}"
+              method="POST" class="was-validated" enctype="multipart/form-data">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="nombreProducto">[[#{producto.nombre}]]</label>
+                  <input type="text" class="form-control" name="nombreProducto" required="true"/>
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion">[[#{producto.descripcion}]]</label>
+                    <textarea type="text" class="form-control" name="descripcion" rows="3" required="true"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="tipo">[[#{producto.tipo}]]</label>
+                  <input type="text" class="form-control" name="tipo" required="true"/>
+                </div>
+                <div class="mb-3">
+                    <label for="precio">[[#{producto.precio}]]</label>
+                    <input type="number" class="form-control" name="precio" required="true"/>
+                </div>
+                <div class="mb-3">
+                    <label for="rutaImagen">[[#{producto.imagen}]]</label>
+                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" required="true"/>
+                    <img id="blah" src="#" alt="your image" height="200"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>
+
+
   
     <!-- botones de editar -->
 

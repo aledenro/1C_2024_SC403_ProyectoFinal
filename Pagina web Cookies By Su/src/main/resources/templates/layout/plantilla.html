@@ -90,7 +90,11 @@
                     <div class="card-body">
                         <h5 class="card-title">[[${producto.nombreProducto}]]</h5>
                         <p class="card-text">[[${producto.descripcion}]]</p>
-                        <a th:href="@{/producto/ver/}+${producto.idProducto}" class="btn btn-primary">Ver Producto</a>
+                        <a
+                                th:href="@{/producto/ver/}+${producto.idProducto}"
+                                class="btn btn-primary"
+                        >Ver Producto</a
+                        >
                     </div>
                 </div>
             </div>
@@ -108,27 +112,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <button
-                        type="button"
-                        class="btn btn-primary btn-block"
-                        data-bs-toggle="modal"
-                        data-bs-target="#agregarProducto"
+                <a th:href="@{/producto/agregar}"
                 >
-                    <i class="fas fa-plus"></i> [[#{producto.agregar}]]
-                </button>
+                    <button type="button" class="btn btn-primary btn-block">
+                        <i class="fas fa-plus"></i> [[#{producto.agregar}]]
+                    </button>
+                </a
+                >
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- 2 Fragmento para agregar producto, es la ventana modal -->
-<section th:fragment="agregarProducto">
-    <div id="agregarProducto"
-         class="modal fade"
-         tabindex="-1"
-         aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-md">
         </div>
     </div>
 </section>

@@ -52,6 +52,11 @@ public class ProductoController {
         return "/producto/modifica";
     }
 
+    @GetMapping("/agregar")
+    public String agregaProducto(Producto producto, Model model) {
+        return "/producto/agregarProducto";
+    }
+
     @GetMapping("eliminar/{idProducto}")
     public String eliminaProducto(Producto producto) {
         productoService.delete(producto);
