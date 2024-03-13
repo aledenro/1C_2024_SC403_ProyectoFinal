@@ -11,36 +11,36 @@
 
         <section th:fragment="formPersonalizar">
             <div class="container">
-                <p class="h2 mt-4">Formulario de personalización</p>
+                <p class="h2 mt-4">[[#{personalizado.titulo}]]</p>
                 <form th:action="@{/personalizado/guardar}" th:object="${pedidoP}"
                       method="POST" class="was-validated" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-group row g-3">
                             <div class="col">
-                                <label for="inputNombre" class="form-label mt-2">Nombre</label>
+                                <label for="inputNombre" class="form-label mt-2">[[#{personalizado.nombre}]]</label>
                                 <input type="text" class="form-control" id="inputNombre" th:field="*{nombre}" placeholder="Nombre">
                             </div>
                             <div class="col">
-                                <label for="inputApellidos" class="form-label mt-2">Apellidos</label>
+                                <label for="inputApellidos" class="form-label mt-2">[[#{personalizado.apellidos}]]</label>
                                 <input type="text" class="form-control" id="inputApellidos" th:field="*{apellidos}" placeholder="Apellidos" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputCorreo" class="form-label mt-2">Correo Electrónico</label>
+                            <label for="inputCorreo" class="form-label mt-2">[[#{personalizado.correo}]]</label>
                             <input type="email" class="form-control" id="inputCorreo" th:field="*{correoElectronico}">
                         </div>
                         <div class="form-group row g-3">
                             <div class="col">
-                                <label for="inputTelefono" class="form-label mt-2">Teléfono</label>
+                                <label for="inputTelefono" class="form-label mt-2">[[#{personalizado.telefono}]]</label>
                                 <input type="number" class="form-control" id="inputTelefono" th:field="*{numeroTelefono}">
                             </div>
                             <div class="col">
-                                <label for="inputFecha" class="form-label mt-2">Fecha preliminar de entrega</label>
+                                <label for="inputFecha" class="form-label mt-2">[[#{personalizado.fechaPreliminar}]]</label>
                                 <input type="date" class="form-control" id="inputFecha" th:field="*{fechaPreliminar}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="textAreaDescripcion" class="form-label mt-2">Descripción</label>
+                            <label for="textAreaDescripcion" class="form-label mt-2">[[#{personalizado.descripcion}]]</label>
                             <textarea class="form-control" id="textAreaDescripcion" rows="3" th:field="*{descripcion}" placeholder="Colores, tamaños, personajes, temática... " ></textarea>
                         </div>
                         <div class="mb-3">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit">Enviar</button>
+                        <button class="btn btn-primary" type="submit">[[#{accion.enviar}]]</button>
                     </div>
                 </form>
             </div>
