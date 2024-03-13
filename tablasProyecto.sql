@@ -50,7 +50,7 @@ create table pedido_personalizado(
     numero_telefono varchar(20) not null,
     fecha_preliminar date not null,
     descripcion varchar(500) not null,
-    ruta_imagen varchar(1024) not null,
+    ruta_imagen varchar(1024),
     primary key(id_pedidop)
 )
 ENGINE = InnoDB
@@ -83,6 +83,15 @@ create table facturacion(
     primary key(id_facturacion),
     foreign key(username) references usuario(username),
     foreign key(num_pedido) references pedido(num_pedido)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+create table form_contacto(
+	nombre varchar(30) not null,
+    apellidos varchar(50) not null,
+    correo_electronico varchar(50) not null,
+    mensaje varchar(2000) not null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
