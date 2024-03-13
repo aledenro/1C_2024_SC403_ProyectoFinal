@@ -21,7 +21,7 @@ public class Personalizado implements Serializable {
     private String apellidos;
     private String correoElectronico;
     private int numeroTelefono;
-//    private  fechaPreliminar;
+    private String fechaPreliminar;
     private String descripcion;
     private String rutaImagen;
 }

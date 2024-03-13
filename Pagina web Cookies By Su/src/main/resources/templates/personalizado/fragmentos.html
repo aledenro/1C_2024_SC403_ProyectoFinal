@@ -8,16 +8,51 @@
     </head>
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+
         <section th:fragment="formPersonalizar">
             <div class="container">
-                <div class="input-group row g-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre">
+                <p class="h2 mt-4">Formulario de personalización</p>
+                <form th:action="@{/personalizado/guardar}" th:object="${pedidoP}"
+                      method="POST" class="was-validated" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-group row g-3">
+                            <div class="col">
+                                <label for="inputNombre" class="form-label mt-2">Nombre</label>
+                                <input type="text" class="form-control" id="inputNombre" th:field="*{nombre}" placeholder="Nombre">
+                            </div>
+                            <div class="col">
+                                <label for="inputApellidos" class="form-label mt-2">Apellidos</label>
+                                <input type="text" class="form-control" id="inputApellidos" th:field="*{apellidos}" placeholder="Apellidos" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCorreo" class="form-label mt-2">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="inputCorreo" th:field="*{correoElectronico}">
+                        </div>
+                        <div class="form-group row g-3">
+                            <div class="col">
+                                <label for="inputTelefono" class="form-label mt-2">Teléfono</label>
+                                <input type="number" class="form-control" id="inputTelefono" th:field="*{numeroTelefono}">
+                            </div>
+                            <div class="col">
+                                <label for="inputFecha" class="form-label mt-2">Fecha preliminar de entrega</label>
+                                <input type="date" class="form-control" id="inputFecha" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="textAreaDescripcion" class="form-label mt-2">Descripción</label>
+                            <textarea class="form-control" id="textAreaDescripcion" rows="3" th:field="*{descripcion}" placeholder="Colores, tamaños, personajes, temática... " ></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagen">[[#{producto.imagen}]]</label>
+                            <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                            <img id="blah" th:src="@{${pedidoP.rutaImagen}}" alt="your image" height="200"/>
+                        </div>
                     </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Apellidos">
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Enviar</button>
                     </div>
-                </div>
+                </form>
             </div>
         </section>
 
@@ -69,8 +104,7 @@
                             </div>
                             <div
                                 class="text-center p-2"
-                                th:if="${categorias == null or categorias.empty}"
-                                >
+                                th:if="${categorias == null or categorias.empty}">
                                 <span>[[#{lista.vacia}]]</span>
                             </div>
                         </div>
@@ -89,29 +123,18 @@
             </div>
         </section>
 
-        <section th:fragment="productosDisplay" id="producto">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <p>[[${producto.nombreProducto}]]</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <!-- 5 Botones -->
         <section th:fragment="botonesEditar">
             <div class="container py-4 mb-4 bg-light">
                 <div class="row">
                     <div class="col-md-4 d-grid">
-                        <a th:href="@{/categoria/listado}" class="btn btn-primary">
+                        <a th:href="@{/producto/listado}" class="btn btn-primary">
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid">
-                        <a
-                            th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
-                            class="btn btn-danger"
-                            >
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
+                           class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
@@ -123,6 +146,11 @@
                 </div>
             </div>
         </section>
+
+
+
+
+
     </body>
 </html>
 

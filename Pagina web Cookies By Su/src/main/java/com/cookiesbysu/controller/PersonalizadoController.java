@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,23 +28,24 @@ public class PersonalizadoController {
     private FirebaseStorageServiceImpl firebaseStorageServiceImpl;
 
     @GetMapping("verForm")
-    public String verForm() {
+    public String verForm(Model model) {
+        model.addAttribute("pedidoP", new Personalizado());
         return "/personalizado/form";
     }
 
 
     @PostMapping("/guardar")
-    public String guardar(Personalizado pedidoP,
+    public String guardar(@ModelAttribute("pedidoP") Personalizado pedidoP,
                           @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
             // si no esta vacio se debe subir la imagen
-            personalizadoService.save(pedidoP);
+//            personalizadoService.save(pedidoP);
             String rutaImagen = firebaseStorageServiceImpl.cargaImagen(imagenFile, "pedidoPersonalizado", pedidoP.getIdPedidoP());
             pedidoP.setRutaImagen(rutaImagen);
 
         }
         personalizadoService.save(pedidoP);
-        return "redirect:/personalizado/form";
+        return "redirect:/";
     }
 
 //    @GetMapping("/modificar/{idProducto}")

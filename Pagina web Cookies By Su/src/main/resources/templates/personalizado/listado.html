@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Cookies By Su</title>
     </head>
     <body>
-        <div>TODO write content</div>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <section th:replace="~{personalizado/fragmentos :: listadoPedidosP}"></section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
