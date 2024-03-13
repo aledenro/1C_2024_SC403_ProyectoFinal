@@ -50,7 +50,7 @@ create table pedido_personalizado(
     numero_telefono varchar(20) not null,
     fecha_preliminar date not null,
     descripcion varchar(500) not null,
-    ruta_imagen varchar(1024) null,
+    ruta_imagen varchar(1024),
     primary key(id_pedidop)
 )
 ENGINE = InnoDB

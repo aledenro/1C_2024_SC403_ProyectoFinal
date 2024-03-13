@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Data
 @Entity
 @Table(name = "pedido_personalizado")
 public class Personalizado implements Serializable {
 
-    private static final Long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,7 @@ public class Personalizado implements Serializable {
     private String apellidos;
     private String correoElectronico;
     private int numeroTelefono;
-    private String fechaPreliminar;
+    private LocalDate fechaPreliminar;
     private String descripcion;
     private String rutaImagen;
 }

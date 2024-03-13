@@ -36,7 +36,7 @@
                             </div>
                             <div class="col">
                                 <label for="inputFecha" class="form-label mt-2">Fecha preliminar de entrega</label>
-                                <input type="date" class="form-control" id="inputFecha" >
+                                <input type="date" class="form-control" id="inputFecha" th:field="*{fechaPreliminar}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -46,7 +46,7 @@
                         <div class="mb-3">
                             <label for="imagen">[[#{producto.imagen}]]</label>
                             <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
-                            <img id="blah" th:src="@{${pedidoP.rutaImagen}}" alt="your image" height="200"/>
+                            <img class="d-block mt-3" id="blah" th:src="@{${pedidoP.rutaImagen}}" alt="your image" height="200"/>
                         </div>
                     </div>
                     <div class="modal-footer">
