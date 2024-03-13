@@ -104,6 +104,35 @@
     </div>
 </section>
 
+<section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <button
+                        type="button"
+                        class="btn btn-primary btn-block"
+                        data-bs-toggle="modal"
+                        data-bs-target="#agregarProducto"
+                >
+                    <i class="fas fa-plus"></i> [[#{producto.agregar}]]
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2 Fragmento para agregar producto, es la ventana modal -->
+<section th:fragment="agregarProducto">
+    <div id="agregarProducto"
+         class="modal fade"
+         tabindex="-1"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-md">
+        </div>
+    </div>
+</section>
+
 <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
     <div class="container">
         <div class="col">
