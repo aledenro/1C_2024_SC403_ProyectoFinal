@@ -25,10 +25,24 @@ public class UsuarioController {
         return "/usuario/perfil";
     }
 
+    @GetMapping("/irRegistro")
+    public String registro(Usuario usuario, Model model) {
+        return "/usuario/registro";
+    }
+
     @PostMapping("/guardarUsuario")
     public String guardarUser(Usuario usuario) {
+
+        Usuario checkUsuario = usuarioService.getUsuario(usuario);
+
+        if (checkUsuario != null) {
+
+        }
+
+        usuario.setRol("Cliente");
+
         usuarioService.saveUsuario(usuario);
 
-        return "redirect: /usuario/perfil";
+        return "redirect:/";
     }
 }

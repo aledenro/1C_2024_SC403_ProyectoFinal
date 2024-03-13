@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Cookies By Su</title>
+</head>
+<body>
+<section th:fragment="registro">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card-header">
+                <h5>[[#{usuario.registro}]]</h5>
+            </div>
+            <form
+                    th:action="@{/usuario/guardarUsuario}"
+                    th:object="${usuario}"
+                    method="POST"
+                    class="was-validated"
+                    enctype="multipart/form-data"
+            >
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="username">[[#{usuario.username}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="username"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="cedula">[[#{usuario.cedula}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="cedula"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre">[[#{usuario.nombre}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="nombre"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellidos">[[#{usuario.apellidos}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="apellidos"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="pais">[[#{usuario.pais}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="pais"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="provincia">[[#{usuario.provincia}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="provincia"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantonDistrito">[[#{usuario.cantonDistrito}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="cantonDistrito"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccionDetallada"
+                        >[[#{usuario.direccionDetallada}]]</label
+                        >
+                        <textarea
+                                type="text"
+                                class="form-control"
+                                name="direccionDetallada"
+                                rows="3"
+                                required="true"
+                        ></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correoElectronico">[[#{usuario.correo}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="correoElectronico"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrasena">[[#{usuario.password}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="contrasena"
+                                required="true"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="numeroTelefono">[[#{usuario.telefono}]]</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                name="numeroTelefono"
+                                required="true"
+                        />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

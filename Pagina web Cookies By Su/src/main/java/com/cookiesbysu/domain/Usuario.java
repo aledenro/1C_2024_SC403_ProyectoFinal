@@ -14,7 +14,6 @@ public class Usuario {
      *PK Usuario
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "username")
     private String username;
 
