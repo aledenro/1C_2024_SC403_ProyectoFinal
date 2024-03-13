@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PersonalizadoService {
 
-    public List<Personalizado> getPedidoP();
+    public List<Personalizado> getPedidosP();
 
     public Personalizado getPedidoP(Personalizado pedidoP);
 

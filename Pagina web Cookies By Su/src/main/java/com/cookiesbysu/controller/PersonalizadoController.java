@@ -51,19 +51,23 @@ public class PersonalizadoController {
         personalizadoService.save(pedidoP);
         return "redirect:/";
     }
+    
+    @GetMapping("/listado")
+    public String listado(Model model) {
+        var lista = personalizadoService.getPedidosP();
+        model.addAttribute("pedidosP", lista);
+        model.addAttribute("totalPedidoP", lista.size());
 
-//    @GetMapping("/modificar/{idProducto}")
-//    public String modifica(Producto producto, Model model) {
-//        producto = productoService.getProducto(producto);
-//        model.addAttribute("producto", producto);
-//        return "/producto/modifica";
-//    }
-//    
-//    @GetMapping("/eliminar/{idPedidoP}")
-//    public String eliminar(Personalizado pedidoP) {
-//        personalizadoService.delete(pedidoP);
-//        return "redirect:/personalizado/listado";
-//    }
-//    
+
+        return "/personalizado/listado";
+    }
+
+    
+    @GetMapping("/eliminar/{idPedidoP}")
+    public String eliminar(Personalizado pedidoP) {
+        personalizadoService.delete(pedidoP);
+        return "redirect:/personalizado/listado";
+    }
+    
 }
 
