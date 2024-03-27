@@ -12,14 +12,14 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuarioDao usuarioDao;
 
-    @Override
-    public Usuario getUsuario(Usuario usuario) {
-        return usuarioDao.findById(usuario.getUsername()).orElse(null);
-    }
+//    @Override
+//    public Usuario getUsuario(Usuario usuario) {
+//        return usuarioDao.findById(usuario.getUsername()).orElse(null);
+//    }
 
     @Override
     public void saveUsuario(Usuario usuario) {
         usuarioDao.save(usuario);
     }
-    
+
 }
