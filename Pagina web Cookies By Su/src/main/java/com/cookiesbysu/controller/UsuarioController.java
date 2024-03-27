@@ -16,33 +16,33 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/verPerfil/{username}")
-    public String mostrarPerfilUsuario(Usuario usuario, Model model) {
+//    @GetMapping("/verPerfil/{username}")
+//    public String mostrarPerfilUsuario(Usuario usuario, Model model) {
+//
+//        usuario = usuarioService.getUsuario(usuario);
+//        model.addAttribute("usuario", usuario);
+//
+//        return "/usuario/perfil";
+//    }
+//
+//    @GetMapping("/irRegistro")
+//    public String registro(Usuario usuario, Model model) {
+//        return "/usuario/registro";
+//    }
 
-        usuario = usuarioService.getUsuario(usuario);
-        model.addAttribute("usuario", usuario);
-
-        return "/usuario/perfil";
-    }
-
-    @GetMapping("/irRegistro")
-    public String registro(Usuario usuario, Model model) {
-        return "/usuario/registro";
-    }
-
-    @PostMapping("/guardarUsuario")
-    public String guardarUser(Usuario usuario) {
-
-        Usuario checkUsuario = usuarioService.getUsuario(usuario);
-
-        if (checkUsuario != null) {
-
-        }
-
-        usuario.setRol("Cliente");
-
-        usuarioService.saveUsuario(usuario);
-
-        return "redirect:/";
-    }
+//    @PostMapping("/guardarUsuario")
+//    public String guardarUser(Usuario usuario) {
+//
+//        Usuario checkUsuario = usuarioService.getUsuario(usuario);
+//
+//        if (checkUsuario != null) {
+//
+//        }
+//
+//        usuario.setRol("Cliente");
+//
+//        usuarioService.saveUsuario(usuario);
+//
+//        return "redirect:/";
+//    }
 }

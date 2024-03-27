@@ -3,6 +3,8 @@ package com.cookiesbysu.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "usuario")
@@ -14,12 +16,15 @@ public class Usuario {
      *PK Usuario
      */
     @Id
-    @Column(name = "username")
-    private String username;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
+    private Long idUsuario;
+
 
     /*
      *atributos Usuario
      */
+    private String username;
     private String cedula;
     private String nombre;
     private String apellidos;
@@ -29,6 +34,9 @@ public class Usuario {
     private String direccionDetallada;
     private String correoElectronico;
     private String contrasena;
-    private String rol;
     private String numeroTelefono;
+
+    @OneToMany
+    @JoinColumn(name = "id_usuario", updatable = false)
+    private List<Rol> roles;
 }

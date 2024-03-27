@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
           <a
             th:href="@{/producto/eliminar/}+${producto.idProducto}"
             class="btn btn-danger"
@@ -155,7 +155,7 @@
               <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
             </a>
           </div>
-          <div class="col-md-4 d-grid">
+          <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
             <a
               th:href="@{/producto/eliminar/}+${producto.idProducto}"
               class="btn btn-danger"
@@ -163,7 +163,7 @@
               <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
             </a>
           </div>
-          <div class="col-md-4 d-grid">
+          <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
             <button type="submit" class="btn btn-success">
               <i class="fas fa-check"></i> [[#{accion.guardar}]]
             </button>

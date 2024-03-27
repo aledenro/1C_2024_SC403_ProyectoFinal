@@ -23,7 +23,7 @@ create table usuario(
     canton_distrito varchar(50),
     direccion_detallada varchar(200),
     correo_electronico varchar(50) not null unique,
-    contrasena varchar(25) not null,
+    contrasena varchar(512) not null,
     numero_telefono varchar(20),
     primary key(id_usuario)
 )
@@ -108,3 +108,17 @@ create table roles(
 
 insert into producto(nombre_producto, descripcion, tipo, precio, ruta_imagen)
 select 'Galletas Nightmare Before Christmass', 'Tamaño: 10 cm <br> Set: 5 Galletas', 'Tamaño Completo', 12500.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fjack%20cookies.jpg?alt=media&token=69200b94-fdd4-4dfd-a805-0cb634963f19'; 
+
+use cookies_by_su;
+
+delete from usuario where id_usuario = 1;
+
+insert into usuario(username, nombre, apellidos, correo_electronico, contrasena)
+select 'admin', 'Admin', 'Admin', 'admin@gmail.com', '$2a$12$gsyP3Rt7jGTkIpO/233y3u9ibJgxJjyndoUOrnfUzCEMHzcii2Rpi' union
+select 'test', 'Test', 'Test', 'test@gmail.com', '$2a$12$NedoCwQi.ToQNf/VSqUHv.IyiPXx0aMQ5edCYkBhPugUwhUvZTeJa';
+
+insert into roles(nombre_rol, id_usuario)
+select 'ROLE_ADMIN', 1 union
+select 'ROLE_USER', 1 union
+select 'ROLE_USER', 2
+
