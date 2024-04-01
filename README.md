@@ -6,3 +6,5 @@ Integrantes:
 -Valeria Solano Vargas
 -Melissa Sanchez Castro
 -Katherine Benavides Gutierrez
+
+Link al repositorio https://github.com/aledenro/1C_2024_SC403_ProyectoFinal.git

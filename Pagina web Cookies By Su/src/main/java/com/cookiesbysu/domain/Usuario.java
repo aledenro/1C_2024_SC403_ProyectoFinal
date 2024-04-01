@@ -1,16 +1,16 @@
 package com.cookiesbysu.domain;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import lombok.Data;
-
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements Serializable{
 
-    private static final Long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     /*
      *PK Usuario

@@ -17,7 +17,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-
 import java.util.Locale;
 
 @Configuration
@@ -55,11 +54,11 @@ public class ProjectConfig implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity.authorizeHttpRequests((request) -> request.requestMatchers("/", "/login", "/js/**", "/webjars/**", "/producto/ver/**", "/producto/info",
-                                "/personalizado/verForm", "/personalizado/form", "/nosotros", "/contacto/contactenos").permitAll()
-                        .requestMatchers("/producto/guardar", "/producto/modificar/**", "/producto/modifica", "/producto/agregarProducto", "/producto/agregar", "producto/eliminar/**",
-                                "/personalizado/listado", "/personalizado/eliminar/**").hasRole("ADMIN")
-                        .requestMatchers("/facturar/carrito").hasRole("USER"))
+        httpSecurity.authorizeHttpRequests((request) -> request.requestMatchers("/", "/login", "/js/**", "/webjars/**", "/producto/ver/**", "/producto/info", "/registro/**",
+                "/personalizado/verForm", "/personalizado/form", "/nosotros", "/contacto/contactenos").permitAll()
+                .requestMatchers("/producto/guardar", "/producto/modificar/**", "/producto/modifica", "/producto/agregarProducto", "/producto/agregar", "producto/eliminar/**",
+                        "/personalizado/listado", "/personalizado/eliminar/**").hasRole("ADMIN")
+                .requestMatchers("/facturar/carrito").hasRole("USER"))
                 .formLogin((form) -> form.loginPage("/login").permitAll())
                 .logout((logout) -> logout.logoutSuccessUrl("/").permitAll());
 
@@ -73,8 +72,6 @@ public class ProjectConfig implements WebMvcConfigurer {
 //
 //        return new InMemoryUserDetailsManager(admin, user);
 //    }
-
-
     @Autowired
     private UserDetailsService userDetailsService;
 
