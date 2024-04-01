@@ -55,10 +55,12 @@ public class ProjectConfig implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity.authorizeHttpRequests((request) -> request.requestMatchers("/", "/login", "/js/**", "/webjars/**", "/producto/ver/**", "/producto/info", "/registro/**",
-                "/personalizado/verForm", "/personalizado/form", "/nosotros/**", "/contacto/contactenos").permitAll()
-                .requestMatchers("/producto/guardar", "/producto/modificar/**", "/producto/modifica", "/producto/agregarProducto", "/producto/agregar", "producto/eliminar/**",
-                        "/personalizado/listado", "/personalizado/eliminar/**").hasRole("ADMIN")
+
+        httpSecurity.authorizeHttpRequests((request) 
+                -> request.requestMatchers("/", "/login", "/js/**", "/webjars/**", "/producto/ver/**", "/producto/info", 
+                        "/registro/**","/personalizado/verForm", "/personalizado/form", "/nosotros/**", "/contacto/**").permitAll()
+                .requestMatchers("/producto/guardar", "/producto/modificar/**", "/producto/modifica", "/producto/agregarProducto", 
+                        "/producto/agregar", "producto/eliminar/**","/personalizado/listado", "/personalizado/eliminar/**").hasRole("ADMIN")
                 .requestMatchers("/facturar/carrito").hasRole("USER"))
                 .formLogin((form) -> form.loginPage("/login").permitAll())
                 .logout((logout) -> logout.logoutSuccessUrl("/").permitAll());
