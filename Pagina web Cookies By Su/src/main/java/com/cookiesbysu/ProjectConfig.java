@@ -49,10 +49,12 @@ public class ProjectConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
+          registry.addViewController("/nosotros/sobreNosotros").setViewName("/nosotros/sobreNosotros");
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
 
         httpSecurity.authorizeHttpRequests((request) 
                 -> request.requestMatchers("/", "/login", "/js/**", "/webjars/**", "/producto/ver/**", "/producto/info", 
