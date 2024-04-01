@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Cookies By Su</title>
+    </head>
+    <body>
+
+        <!-- html vista detallada perfil -->
+        <section th:fragment="perfilDisplay" id="perfil">
+            <div class="container px-4">
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="p-3">
+                            <h2>[[${perfil.username}]]</h2>
+                            <br />
+                            <h2>[[${perfil.apellidos}]]</h2>
+                            <br />
+                            <h2>[[${perfil.cedula}]]</h2>
+                            <br />
+                            <h2>[[${perfil.telefono}]]</h2>
+                            <br />
+                            <h2>[[${perfil.pais}]]</h2>
+                            <br />
+                            <h2>[[${perfil.provincia}]]</h2>
+                            <br />
+                            <h2>[[${perfil.cantonDistrito}]]</h2>
+                            <br />
+                            <h2>[[${perfil.direccionDetallada}]]</h2>
+                            <br />
+                            <h2>[[${perfil.password}]]</h2>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a
+                        th:href="@{/perfil/eliminar/}+${perfil.idPerfil}"
+                        class="btn btn-danger"
+                        >
+                        <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a
+                    >
+                    <a
+                        th:href="@{/perfil/modificar/}+${perfil.idPerfil}"
+                        class="btn btn-success"
+                        >
+                        <i class="fas fa-pencil"></i>
+                        [[#{accion.actualizar}]]</a
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- html editar perfil -->
+        <section th:fragment="editarPerfil">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/perfil/guardar}" 
+                          th:object="${perfil}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idPerfil" th:field="*{idPerfil}"/>
+                        <section th:replace="~{perfil/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>[[#{accion.actualizar}]]</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label for="nombrePerfil">[[#{perfil.username}]]</label>
+                                                        <input type="text" class="form-control" name="nombrePerfil" th:field="*{nombrePerfil}" required="true"/>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="apellidos">[[#{perfil.apellidos}]]</label>
+                                                        <textarea type="text" class="form-control" name="apellidos" th:field="*{apellidos}" rows="3"></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="cedula">[[#{perfil.cedula}]]</label>
+                                                        <input type="number" class="form-control" name="cedula" th:field="*{cedula}" required="true"/>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="telefono">[[#{perfil.telefono}]]</label>
+                                                        <input type="number" class="form-control" name="telefono" th:field="*{telefono}" required="true"/>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="pais">[[#{perfil.pais}]]</label>
+                                                        <textarea type="text" class="form-control" name="pais" th:field="*{pais}" rows="3"></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="provincia">[[#{perfil.provincia}]]</label>
+                                                        <textarea type="text" class="form-control" name="provincia" th:field="*{provincia}" rows="3"></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="cantonDistrito">[[#{perfil.cantonDistrito}]]</label>
+                                                        <textarea type="text" class="form-control" name="cantonDistrito" th:field="*{cantonDistrito}" rows="3"></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="direccionDetallada">[[#{perfil.direccionDetallada}]]</label>
+                                                        <textarea type="text" class="form-control" name="direccionDetallada" th:field="*{direccionDetallada}" rows="3"></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="password">[[#{perfil.password}]]</label>
+                                                        <input type="text" class="form-control" name="password" th:field="*{password}" required="true"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        </section>
+
+                        <section th:fragment="agregarPerfil">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <div class="card-header">
+                                        <h5>[[#{perfil.agregar}]]</h5>
+                                    </div> 
+                                    <form th:action="@{/perfil/guardar}" th:object="${perfil}"
+                                          method="POST" class="was-validated" enctype="multipart/form-data">
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="nombrePerfil">[[#{perfil.username}]]</label>
+                                                <input type="text" class="form-control" name="nombrePerfil" required="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="apellidos">[[#{perfil.apellidos}]]</label>
+                                            <textarea type="text" class="form-control" name="apellidos" th:field="*{apellidos}" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="cedula">[[#{perfil.cedula}]]</label>
+                                            <input type="number" class="form-control" name="cedula" th:field="*{cedula}" required="true"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="telefono">[[#{perfil.telefono}]]</label>
+                                            <input type="number" class="form-control" name="telefono" th:field="*{telefono}" required="true"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="pais">[[#{perfil.pais}]]</label>
+                                            <textarea type="text" class="form-control" name="pais" th:field="*{pais}" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="provincia">[[#{perfil.provincia}]]</label>
+                                            <textarea type="text" class="form-control" name="provincia" th:field="*{provincia}" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="cantonDistrito">[[#{perfil.cantonDistrito}]]</label>
+                                            <textarea type="text" class="form-control" name="cantonDistrito" th:field="*{cantonDistrito}" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="direccionDetallada">[[#{perfil.direccionDetallada}]]</label>
+                                            <textarea type="text" class="form-control" name="direccionDetallada" th:field="*{direccionDetallada}" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password">[[#{perfil.password}]]</label>
+                                            <input type="text" class="form-control" name="password" th:field="*{password}" required="true"/>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">[[#{perfil.guardar}]]</button>
+                                </div>
+                                </form>
+                            </div>
+                            </div>
+                        </section>
+
+
+
+                        <!-- botones de editar -->
+
+                        <section th:fragment="botonesEditar">
+                            <div class="container py-4 mb-4 bg-light">
+                                <div class="row">
+                                    <div class="col-md-4 d-grid">
+                                        <a th:href="@{/}" class="btn btn-primary">
+                                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <a
+                                            th:href="@{/perfil/eliminar/}+${perfil.idPerfil}"
+                                            class="btn btn-danger"
+                                            >
+                                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        </body>
+                        </html>
