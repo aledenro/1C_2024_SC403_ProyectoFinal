@@ -2,6 +2,7 @@ package com.cookiesbysu.controller;
 
 import com.cookiesbysu.domain.Contacto;
 import com.cookiesbysu.service.ContactoService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,14 +30,10 @@ public class ContactoController {
 
 
     @PostMapping("/enviar")
-    public String enviar(@ModelAttribute("contacto") Contacto contacto){
-
-       contactoService.save(contacto);
-        return "redirect:/";
+    public String enviarCorreo(Model model, Contacto contacto)throws MessagingException {
+        model=contactoService.enviarCorreo(model, contacto);
+        return "/contacto/salida";
     }
 
-
-    
-    
 }
 
