@@ -1,8 +1,8 @@
 package com.cookiesbysu.service.impl;
 
-import com.cookiesbysu.dao.ProductoDao;
-import com.cookiesbysu.domain.Producto;
-import com.cookiesbysu.service.ProductoService;
+import com.cookiesbysu.dao.PerfilDao;
+import com.cookiesbysu.domain.Perfil;
+import com.cookiesbysu.service.PerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,34 +10,39 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ProductoServiceImpl implements ProductoService {
+public class PerfilServiceImpl implements PerfilService {
 
     @Autowired
-    private ProductoDao productoDao;
+    private PerfilDao perfilDao;
 
-    @Override
+    /**
+     *
+     * @return
+     */
     @Transactional(readOnly = true)
-    public List<Producto> getProductos() {
-        var listaProductos = productoDao.findAll();
+    @Override
+    public List<Perfil> getPerfil() {
+        var listaPerfil = perfilDao.findAll();
 
-        return listaProductos;
+        return listaPerfil;
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Producto getProducto(Producto producto) {
-        return productoDao.findById(producto.getIdProducto()).orElse(null);
+    public Perfil getPerfil(Perfil perfil) {
+        return perfilDao.findById(perfil.getIdPerfil()).orElse(null);
     }
 
     @Override
     @Transactional
-    public void save(Producto producto) {
-        productoDao.save(producto);
+    public void save(Perfil perfil) {
+        perfilDao.save(perfil);
     }
 
     @Override
     @Transactional
-    public void delete(Producto producto) {
-        productoDao.delete(producto);
+    public void delete(Perfil perfil) {
+        perfilDao.delete(perfil);
     }
+
 }

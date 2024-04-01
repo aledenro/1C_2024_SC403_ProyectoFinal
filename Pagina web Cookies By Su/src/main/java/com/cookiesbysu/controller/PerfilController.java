@@ -1,65 +1,46 @@
 package com.cookiesbysu.controller;
 
-import com.cookiesbysu.domain.Producto;
-import com.cookiesbysu.service.FirebaseStorageService;
-import com.cookiesbysu.service.ProductoService;
+import com.cookiesbysu.domain.Perfil;
+import com.cookiesbysu.service.PerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/producto")
-public class ProductoController {
+@RequestMapping("/perfil")
+public class PerfilController {
 
     @Autowired
-    private ProductoService productoService;
+    private PerfilService perfilService;
 
-    @GetMapping("ver/{idProducto}")
-    public String mostarProducto(Producto producto, Model model) {
+    @GetMapping("ver/{idPerfil}")
+    public String mostarPerfil(Perfil perfil, Model model) {
 
-        producto = productoService.getProducto(producto);
-        model.addAttribute("producto", producto);
+        perfil = perfilService.getPerfil(perfil);
+        model.addAttribute("perfil", perfil);
 
-        return "/producto/info";
+        return "/perfil/info";
     }
 
-    @Autowired
-    private FirebaseStorageService firebaseStorageService;
 
-    @PostMapping("/guardar")
-    public String guardarProducto(Producto producto, @RequestParam("imagenFile") MultipartFile imagenFile) {
-        if (!imagenFile.isEmpty()) {
-            productoService.save(producto);
-            String rutaImagen = firebaseStorageService.cargaImagen(imagenFile, "productos", producto.getIdProducto());
-            producto.setRutaImagen(rutaImagen);
+    @GetMapping("/modificar/{idPerfil}")
+    public String modificaPerfil(Perfil perfil, Model model) {
+        perfil = perfilService.getPerfil(perfil);
+        model.addAttribute("perfil", perfil);
 
-        }
-        productoService.save(producto);
-
-        return "redirect:/";
-    }
-
-    @GetMapping("/modificar/{idProducto}")
-    public String modificaProducto(Producto producto, Model model) {
-        producto = productoService.getProducto(producto);
-        model.addAttribute("producto", producto);
-
-        return "/producto/modifica";
+        return "/perfil/modifica";
     }
 
     @GetMapping("/agregar")
-    public String agregaProducto(Producto producto, Model model) {
-        return "/producto/agregarProducto";
+    public String agregaPerfil(Perfil perfil, Model model) {
+        return "/perfil/agregarPerfil";
     }
 
-    @GetMapping("eliminar/{idProducto}")
-    public String eliminaProducto(Producto producto) {
-        productoService.delete(producto);
+    @GetMapping("eliminar/{idPerfil}")
+    public String eliminaPerfil(Perfil perfil) {
+        perfilService.delete(perfil);
 
         return "redirect:/";
     }

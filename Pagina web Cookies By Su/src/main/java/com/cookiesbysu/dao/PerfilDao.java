@@ -1,7 +1,7 @@
 package com.cookiesbysu.dao;
 
-import com.cookiesbysu.domain.Producto;
+import com.cookiesbysu.domain.Perfil;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductoDao extends JpaRepository<Producto, Long> {
+public interface PerfilDao extends JpaRepository<Perfil, Long> {
 }

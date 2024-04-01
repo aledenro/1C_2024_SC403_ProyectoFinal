@@ -1,16 +1,16 @@
 package com.cookiesbysu.service;
 
-import com.cookiesbysu.domain.Producto;
+import com.cookiesbysu.domain.Perfil;
 
 import java.util.List;
 
-public interface ProductoService {
+public interface PerfilService {
 
-    public List<Producto> getProductos();
+    public List<Perfil> getPerfil();
 
-    public Producto getProducto(Producto producto);
+    public Perfil getPerfil(Perfil perfil);
 
-    public void save(Producto producto);
+    public void save(Perfil perfil);
 
-    public void delete(Producto producto);
+    public void delete(Perfil perfil);
 }
