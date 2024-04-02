@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
 import java.util.Locale;
 
 @Configuration
@@ -49,26 +50,26 @@ public class ProjectConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
-          registry.addViewController("/nosotros/sobreNosotros").setViewName("/nosotros/sobreNosotros");
+        registry.addViewController("/nosotros/sobreNosotros").setViewName("/nosotros/sobreNosotros");
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
 
-        httpSecurity.authorizeHttpRequests((request) 
-                -> request.requestMatchers("/", "/login", "/js/**", "/webjars/**", "/producto/ver/**", "/producto/info", 
-                        "/registro/**","/personalizado/verForm", "/personalizado/form", "/nosotros/**", "/contacto/**").permitAll()
-                .requestMatchers("/producto/guardar", "/producto/modificar/**", "/producto/modifica", "/producto/agregarProducto", 
-                        "/producto/agregar", "producto/eliminar/**","/personalizado/listado", "/personalizado/eliminar/**").hasRole("ADMIN")
-                .requestMatchers("/facturar/carrito").hasRole("USER"))
+        httpSecurity.authorizeHttpRequests((request)
+                        -> request.requestMatchers("/", "/login", "/js/**", "/webjars/**", "/producto/ver/**", "/producto/info",
+                                "/registro/**", "/personalizado/verForm", "/personalizado/form", "/nosotros/**", "/contacto/**").permitAll()
+                        .requestMatchers("/producto/guardar", "/producto/modificar/**", "/producto/modifica", "/producto/agregarProducto",
+                                "/producto/agregar", "producto/eliminar/**", "/personalizado/listado", "/personalizado/eliminar/**").hasRole("ADMIN")
+                        .requestMatchers("/facturar/carrito", "perfil/**").hasRole("USER"))
                 .formLogin((form) -> form.loginPage("/login").permitAll())
                 .logout((logout) -> logout.logoutSuccessUrl("/").permitAll());
 
         return httpSecurity.build();
     }
 
-//    @Bean
+    //    @Bean
 //    public UserDetailsService users() {
 //        UserDetails admin = User.builder().username("admin").password("{noop}123").roles("USER", "ADMIN").build();
 //        UserDetails user = User.builder().username("test").password("{noop}789").roles("USER").build();
