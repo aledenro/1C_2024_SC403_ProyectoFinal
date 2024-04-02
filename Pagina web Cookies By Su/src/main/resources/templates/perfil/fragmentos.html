@@ -60,11 +60,11 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <form method="POST"
-                          th:action="@{/perfil/guardar}" 
-                          th:object="${perfil}"
+                          th:action="@{/perfil/guardarUsuario}" 
+                          th:object="${usuario}"
                           class="was-validated"                          
                           enctype="multipart/form-data">
-                        <input type="hidden" name="idPerfil" th:field="*{idPerfil}"/>
+                        <input type="hidden" name="idPerfil" th:field="*{idUsuario}"/>
                         <section th:replace="~{perfil/fragmentos :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
@@ -77,40 +77,32 @@
                                             <div class="card-body">
                                                 <div class="modal-body">
                                                     <div class="mb-3">
-                                                        <label for="nombrePerfil">[[#{perfil.username}]]</label>
-                                                        <input type="text" class="form-control" name="nombrePerfil" th:field="*{nombrePerfil}" required="true"/>
+                                                        <label for="nombre">[[#{usuario.nombre}]]</label>
+                                                        <input type="text" class="form-control" name="nombre" th:field="*{nombre}"></input>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="apellidos">[[#{perfil.apellidos}]]</label>
-                                                        <textarea type="text" class="form-control" name="apellidos" th:field="*{apellidos}" rows="3"></textarea>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="cedula">[[#{perfil.cedula}]]</label>
-                                                        <input type="number" class="form-control" name="cedula" th:field="*{cedula}" required="true"/>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="telefono">[[#{perfil.telefono}]]</label>
-                                                        <input type="number" class="form-control" name="telefono" th:field="*{telefono}" required="true"/>
+                                                        <label for="apellidos">[[#{usuario.apellidos}]]</label>
+                                                        <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}"></input>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="pais">[[#{perfil.pais}]]</label>
-                                                        <textarea type="text" class="form-control" name="pais" th:field="*{pais}" rows="3"></textarea>
+                                                        <input type="text" class="form-control" name="pais" th:field="*{pais}"></input>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="provincia">[[#{perfil.provincia}]]</label>
-                                                        <textarea type="text" class="form-control" name="provincia" th:field="*{provincia}" rows="3"></textarea>
+                                                        <label for="provincia">[[#{usuario.provincia}]]</label>
+                                                        <input type="text" class="form-control" name="provincia" th:field="*{provincia}"></input>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="cantonDistrito">[[#{perfil.cantonDistrito}]]</label>
-                                                        <textarea type="text" class="form-control" name="cantonDistrito" th:field="*{cantonDistrito}" rows="3"></textarea>
+                                                        <label for="cantonDistrito">[[#{usuario.cantonDistrito}]]</label>
+                                                        <input type="text" class="form-control" name="cantonDistrito" th:field="*{cantonDistrito}"></input>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="direccionDetallada">[[#{perfil.direccionDetallada}]]</label>
+                                                        <label for="direccionDetallada">[[#{usuario.direccionDetallada}]]</label>
                                                         <textarea type="text" class="form-control" name="direccionDetallada" th:field="*{direccionDetallada}" rows="3"></textarea>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="password">[[#{perfil.password}]]</label>
-                                                        <input type="text" class="form-control" name="password" th:field="*{password}" required="true"/>
+                                                        <label for="numeroTelefono">[[#{usuario.telefono}]]</label>
+                                                        <input type="text" class="form-control" name="numeroTelefono" th:field="*{numeroTelefono}" rows="3"></input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,66 +114,6 @@
                         </div>
                         </section>
 
-                        <section th:fragment="agregarPerfil">
-                            <div class="row">
-                                <div class="col-md-2"></div>
-                                <div class="col-md-8">
-                                    <div class="card-header">
-                                        <h5>[[#{perfil.agregar}]]</h5>
-                                    </div> 
-                                    <form th:action="@{/perfil/guardar}" th:object="${perfil}"
-                                          method="POST" class="was-validated" enctype="multipart/form-data">
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label for="nombrePerfil">[[#{perfil.username}]]</label>
-                                                <input type="text" class="form-control" name="nombrePerfil" required="true"/>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="apellidos">[[#{perfil.apellidos}]]</label>
-                                            <textarea type="text" class="form-control" name="apellidos" th:field="*{apellidos}" rows="3"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="cedula">[[#{perfil.cedula}]]</label>
-                                            <input type="number" class="form-control" name="cedula" th:field="*{cedula}" required="true"/>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="telefono">[[#{perfil.telefono}]]</label>
-                                            <input type="number" class="form-control" name="telefono" th:field="*{telefono}" required="true"/>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="pais">[[#{perfil.pais}]]</label>
-                                            <textarea type="text" class="form-control" name="pais" th:field="*{pais}" rows="3"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="provincia">[[#{perfil.provincia}]]</label>
-                                            <textarea type="text" class="form-control" name="provincia" th:field="*{provincia}" rows="3"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="cantonDistrito">[[#{perfil.cantonDistrito}]]</label>
-                                            <textarea type="text" class="form-control" name="cantonDistrito" th:field="*{cantonDistrito}" rows="3"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="direccionDetallada">[[#{perfil.direccionDetallada}]]</label>
-                                            <textarea type="text" class="form-control" name="direccionDetallada" th:field="*{direccionDetallada}" rows="3"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="password">[[#{perfil.password}]]</label>
-                                            <input type="text" class="form-control" name="password" th:field="*{password}" required="true"/>
-                                        </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" type="submit">[[#{perfil.guardar}]]</button>
-                                </div>
-                                </form>
-                            </div>
-                            </div>
-                        </section>
-
-
-
-                        <!-- botones de editar -->
-
                         <section th:fragment="botonesEditar">
                             <div class="container py-4 mb-4 bg-light">
                                 <div class="row">
@@ -190,15 +122,10 @@
                                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                                         </a>
                                     </div>
-                                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
-                                        <a
-                                            th:href="@{/perfil/eliminar/}+${perfil.idPerfil}"
-                                            class="btn btn-danger"
-                                            >
-                                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
-                                        </a>
+                                    <div class="col-md-4 d-grid">
+                                        
                                     </div>
-                                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <div class="col-md-4 d-grid">
                                         <button type="submit" class="btn btn-success">
                                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                                         </button>

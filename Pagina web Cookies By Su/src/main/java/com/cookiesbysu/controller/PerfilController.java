@@ -1,11 +1,14 @@
 package com.cookiesbysu.controller;
 
-import com.cookiesbysu.domain.Perfil;
-import com.cookiesbysu.service.PerfilService;
+import com.cookiesbysu.domain.Usuario;
+import com.cookiesbysu.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -13,36 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PerfilController {
 
     @Autowired
-    private PerfilService perfilService;
+    private UsuarioService usuarioService;
 
-    @GetMapping("ver/{idPerfil}")
-    public String mostarPerfil(Perfil perfil, Model model) {
+    @GetMapping("verPerfil")
+    public String mostarPerfil(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        Usuario usuario = usuarioService.getUsuarioPorUsername(userDetails.getUsername());
+        model.addAttribute("usuario", usuario);
 
-        perfil = perfilService.getPerfil(perfil);
-        model.addAttribute("perfil", perfil);
-
-        return "/perfil/info";
+        return "/perfil/infoPerfil";
     }
 
+//    @GetMapping("eliminar/{idUsuario}")
+//    public String eliminaPerfil(Usuario usuario) {
+//        usuarioService.delete(usuario);
+//
+//        return "redirect:/";
+//    }
 
-    @GetMapping("/modificar/{idPerfil}")
-    public String modificaPerfil(Perfil perfil, Model model) {
-        perfil = perfilService.getPerfil(perfil);
-        model.addAttribute("perfil", perfil);
+    @PostMapping("/guardarUsuario")
+    public String guardarUser(Usuario usuario) {
 
-        return "/perfil/modifica";
-    }
+        usuarioService.actualizarDatos(usuario);
 
-    @GetMapping("/agregar")
-    public String agregaPerfil(Perfil perfil, Model model) {
-        return "/perfil/agregarPerfil";
-    }
-
-    @GetMapping("eliminar/{idPerfil}")
-    public String eliminaPerfil(Perfil perfil) {
-        perfilService.delete(perfil);
-
-        return "redirect:/";
+        return "redirect:/perfil/verPerfil";
     }
 
 }
