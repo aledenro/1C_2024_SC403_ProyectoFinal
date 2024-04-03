@@ -59,7 +59,7 @@ public class ProjectConfig implements WebMvcConfigurer {
 
         httpSecurity.authorizeHttpRequests((request)
                         -> request.requestMatchers("/", "/login", "/js/**", "/webjars/**", "/producto/ver/**", "/producto/info",
-                                "/registro/**", "/personalizado/verForm", "/personalizado/form", "/nosotros/**", "/contacto/**").permitAll()
+                                "/registro/**", "/personalizado/**", "/personalizado/form", "/nosotros/**", "/contacto/**").permitAll()
                         .requestMatchers("/producto/guardar", "/producto/modificar/**", "/producto/modifica", "/producto/agregarProducto",
                                 "/producto/agregar", "producto/eliminar/**", "/personalizado/listado", "/personalizado/eliminar/**").hasRole("ADMIN")
                         .requestMatchers("/facturar/carrito", "perfil/**").hasRole("USER"))

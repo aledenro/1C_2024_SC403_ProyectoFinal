@@ -3,6 +3,7 @@ package com.cookiesbysu.controller;
 import com.cookiesbysu.domain.Personalizado;
 import com.cookiesbysu.service.PersonalizadoService;
 import com.cookiesbysu.service.impl.FirebaseStorageServiceImpl;
+import jakarta.mail.MessagingException;
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,7 +26,6 @@ public class PersonalizadoController {
     @Autowired
     private PersonalizadoService personalizadoService;
 
-
     @Autowired
     private FirebaseStorageServiceImpl firebaseStorageServiceImpl;
 
@@ -35,11 +35,10 @@ public class PersonalizadoController {
         return "/personalizado/form";
     }
 
-
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute("pedidoP") Personalizado pedidoP,
-                          @RequestParam("imagenFile") MultipartFile imagenFile,
-                          @RequestParam("fechaPreliminar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
+    public String guardar(Model model, @ModelAttribute("pedidoP") Personalizado pedidoP,
+            @RequestParam("imagenFile") MultipartFile imagenFile,
+            @RequestParam("fechaPreliminar") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) throws MessagingException {
         if (!imagenFile.isEmpty()) {
             // si no esta vacio se debe subir la imagen
             personalizadoService.save(pedidoP);
@@ -49,25 +48,29 @@ public class PersonalizadoController {
         }
         pedidoP.setFechaPreliminar(fecha);
         personalizadoService.save(pedidoP);
-        return "redirect:/";
+
+        enviarCorreo(model, pedidoP);
+
+        return "/personalizado/salida";
     }
-    
+
+    private void enviarCorreo(Model model, Personalizado pedidoP) throws MessagingException {
+        model= personalizadoService.enviarCorreo(model, pedidoP);
+    }
+
     @GetMapping("/listado")
     public String listado(Model model) {
         var lista = personalizadoService.getPedidosP();
         model.addAttribute("pedidosP", lista);
         model.addAttribute("totalPedidoP", lista.size());
 
-
         return "/personalizado/listado";
     }
 
-    
     @GetMapping("/eliminar/{idPedidoP}")
     public String eliminar(Personalizado pedidoP) {
         personalizadoService.delete(pedidoP);
         return "redirect:/personalizado/listado";
     }
-    
-}
 
+}
