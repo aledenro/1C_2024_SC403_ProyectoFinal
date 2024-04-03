@@ -1,19 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cookiesbysu.service.impl;
 
 import com.cookiesbysu.dao.ContactoDao;
 import com.cookiesbysu.domain.Contacto;
-import com.cookiesbysu.domain.Usuario;
 import com.cookiesbysu.service.ContactoService;
 import com.cookiesbysu.service.CorreoService;
 import jakarta.mail.MessagingException;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
@@ -52,10 +45,9 @@ public class ContactoServiceImpl implements ContactoService {
     }
 
     @Override
+    @Transactional
     public void enviar(Contacto contacto) {
             contactoDao.save(contacto);
-
-
     }
 
     @Override

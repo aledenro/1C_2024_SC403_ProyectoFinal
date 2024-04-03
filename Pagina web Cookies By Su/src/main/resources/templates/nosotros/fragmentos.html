@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Cookies By Su</title>
+    </head>
+    <body>
+
+        <section th:fragment="sobre">
+
+            <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-danger bg-opacity-10">
+                <div class="col-md-5 p-lg-5 mx-auto my-5">
+                    <h1 class="display-5 fw-bold text-body-emphasis">[[#{nosotros.titulo}]]</h1>
+                    <p class="lead fw-normal mt-3">[[#{nosotros.abstract}]]</p>
+                </div>
+            </div>
+
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <h2 class="text-body-emphasis fw-bold text-center">[[#{nosotros.historia.titulo}]]</h2>
+                        <p class="lh-lg">[[#{nosotros.historia1}]]</p>
+                        <p class="lh-lg">[[#{nosotros.historia2}]]</p>
+                        <p class="lh-lg">[[#{nosotros.historia3}]]</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <h2 class="text-body-emphasis fw-bold text-center">[[#{nosotros.redes.titulo}]]</h2>
+                        <p class="lh-lg">[[#{nosotros.redes1}]]</p>
+                        <p class="lh-lg">[[#{nosotros.redes2}]]</p>
+                        <p class="lh-lg">[[#{nosotros.redes3}]]</p>
+                        <div class="row g-2">
+                            <div class="col-6 text-center">
+                                <a href="https://www.facebook.com/profile.php?id=100091903178022&sk=about" class="fs-5 fw-bold text-decoration-none link-secondary"><i class="fa-brands fa-square-facebook"></i></i> Cookies by Su</a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="https://www.instagram.com/cookiesby_su?igsh=b203Z3RsYnk3MWY3" class="fs-5 fw-bold text-decoration-none link-secondary"><i class="fa-brands fa-instagram"></i> cookiesby_su</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <h2 class="text-body-emphasis fw-bold text-center">[[#{nosotros.direccion.titulo}]]</h2>
+                        <p class="lh-lg">[[#{nosotros.direccion}]]</p>
+                        <h4><small class="text-body-secondary text-center">[[#{nosotros.direccion.small}]]</small></h4>
+                        <div class="embed-responsive embed-responsive-4by3 mx-auto">                            
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15721.217070329854!2d-84.0050783!3d9.9085969!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e1000cd64fb9%3A0x5b3d1b165660c4b!2sCookies%20By%20Su!5e0!3m2!1ses!2scr!4v1711937067270!5m2!1ses!2scr" width="1000" height="450" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <figcaption>[[#{nosotros.direccion.figcaption}]]</figcaption>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--        <header th:fragment="header" class="header rounded" id="header">
+            <nav class="navbar navbar-expand bg-body-tertiary rounded">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-lg-flex" id="navbarCollapse">
+                        <a th:href="@{/}" class="navbar-brand col-lg-3 me-0">[[#{aplicacion.titulo}]]</a>
+                        <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/}">[[#{plantilla.catalogo}]]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/personalizado/verForm}">[[#{plantilla.personalizar}]]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/nosotros/sobreNosotros}">[[#{plantilla.aboutus}]]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/contacto/contactenos}">[[#{plantilla.contactenos}]]</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" role="button">[[#{plantilla.idioma}]]</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{/(lang=es)}">ES</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                                        <li class="nav-item px-2 text-white my-auto">
+                                            <a class="nav-link" th:href="@{/login}">Log In</a>
+                                        </li>
+                                    </ul>
+                        <div class="d-lg-flex col-lg-3 justify-content-lg-end" sec:authorize="!isAuthenticated()">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/personalizado/verForm}">[[#{plantilla.personalizar}]]</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/nosotros/sobreNosotros}">[[#{plantilla.aboutus}]]</a>
+                                </li>
+                            </ul>
+
+                            <button class="btn btn-primary" th:href="@{/login}" >LogIn</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>-->
+
+
+
+    </body>
+</html>

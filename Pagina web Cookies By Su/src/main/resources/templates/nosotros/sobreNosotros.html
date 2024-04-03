@@ -1,52 +1,15 @@
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <title>Cookies by Su</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Cookies By Su</title>
     </head>
     <body>
-       <header class="encabezado"> 
-            <nav class="navegacion">
-                <a class="logo nav-link" href="index.html">Cookies by Su</a> 
-                <ul class="nav-menu">
-                    <li class="nav-menu-item"><a class="nav-link nav-menu-link" href="redesSociales.html">Redes Sociales</a></li>
-                    <li class="nav-menu-item"><a  class="nav-link nav-menu-link" href="sobreNosotros.html">Sobre Nosotros</a></li>
-                    <li class="nav-menu-item"><a  class="nav-link nav-menu-link" href="ubicación.html">Ubicación</a></li>
-                </ul>
-            </nav>
-        </header>
-          <aside>
-            <h2>¡Descubre la deliciosa historia de Cookies by Su!</h2>
-            <p>Fundada en diciembre de 2022 como un humilde pasatiempo familiar, nuestra empresa de galletas rápidamente floreció bajo la dirección experta de nuestra fundadora y maestra galletera, Susan. </p>
-          </aside>
-          <section>
-              <h1>Historia del empredimiento</h1> 
-              <p>Cookies by Su es una innovadora y cálida empresa de galletas, fundada en de diciembre de 2022. Lo que comenzó como un pasatiempo familiar rápidamente floreció, formalizándose en una prometedora empresa en febrero de 2023. Nuestra historia comienza en la cocina de Susan, nuestra fundadora y maestra galletera, cuyas manos han estado detrás de cada receta y cada galleta horneada con amor. Las galletas de Susan, famosas entre amigos y familiares por su sabor inigualable y textura perfecta, se convirtieron en el centro de atención en cada evento familiar. Fue esta constante alabanza y el impulso de su familia lo que la motivó a dar el salto de confianza para convertir su pasión en su profesión.
-                  En "Cookies by Su", creemos firmemente en el valor de los negocios familiares y el toque personal que cada uno de nuestros productos lleva. Cada galleta es más que un simple bocado; es una experiencia única, creada con ingredientes de la más alta calidad y una pizca de amor. Desde aquellos días iniciales, hasta hoy, hemos mantenido esa esencia que nos hace únicos: el compromiso con la excelencia, la innovación constante en nuestras recetas, y por supuesto, el calor y la cercanía de un negocio familiar.
-                  Invitamos a todos nuestros clientes a ser parte de esta dulce aventura, experimentando el verdadero sabor de las galletas hechas con pasión y dedicación. En "Cookies by Su", no solo vendemos galletas; compartimos momentos de felicidad, creamos recuerdos y fortalecemos lazos con cada mordida. 
-              </p>
-          </section>
-         <section>
-              <h1>¡Conéctate con nosotros en las redes sociales y únete a nuestra dulce comunidad!</h1> 
-              <p>Síguenos en nuestras redes sociales para mantenerte al día con las últimas noticias, promociones exclusivas y detrás de escena de Cookies by Su.
-                  Únete a nuestra comunidad de amantes de las galletas y comparte momentos deliciosos con nosotros.</p>
-              <p>¡No te pierdas ni una sola galleta! Síguenos ahora en nuestras redes sociales:</p>
-                <iframe src="https://www.facebook.com/share/bd573V3NDFobH6jR/?mibextid=WC7FNe" width="600" height="400" frameborder="0" scrolling="auto"></iframe>
-                 <iframe src="https://www.instagram.com/cookiesby_su?igsh=ZTZxdHVzendwOXAy" width="600" height="400" frameborder="0" scrolling="auto"></iframe>
-          </section>
-          <section>
-              <h1>¡Recoge tus galletas directamente desde nuestra cocina!</h1> 
-              <p>Nuestro hogar es también el corazón de Cookies by Su. Ven a recoger tus pedidos directamente desde nuestra ubicación en Avenida Omega,Cartago.
-                  Apreciamos tu apoyo y esperamos compartir nuestras delicias directamente contigo.</p>
-                <article> 
-                <h2>Avenida Omega,Cartago,Costa Rica</h2>
-                <figure> 
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15721.217070329854!2d-84.0050783!3d9.9085969!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e1000cd64fb9%3A0x5b3d1b165660c4b!2sCookies%20By%20Su!5e0!3m2!1ses!2scr!4v1711937067270!5m2!1ses!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <figcaption>¡Estamos ansiosos por verte en nuestra ubicación para retirar tus galletas favoritas!"</figcaption>
-                </figure>
-            </article>
-          </section>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <section th:replace="~{nosotros/fragmentos :: sobre}"></section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
+
