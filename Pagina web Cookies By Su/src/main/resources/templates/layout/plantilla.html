@@ -76,36 +76,58 @@
             </nav>
         </header>
 
+
+        <section th:fragment="catalogoHero" id="catalogo">
+            <div class="px-4 py-2 my-2 text-center">
+<!--                <img class="d-block mx-auto mb-4"  src="/static/img/logo2.PNG" alt="" width="72" height="57"/>-->
+                <h1 class="display-5 fw-bold text-body-emphasis">Galletas</h1>
+<!--                <div class="col-lg-6 mx-auto">
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
+                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+                    </div>
+                </div>-->
+            </div>
+        </section>
+
+
+
         <section th:fragment="productosDisplay" id="productos">
-            <div class="container text-center">
-                <div class="row" th:if="${productos != null and !productos.empty}">
-                    <span th:each="i : ${#numbers.sequence(0, 3)}"></span>
-                    <div class="col" th:each="producto : ${productos}">
-                        <div class="card" style="width: 18rem">
-                            <img th:src="@{${producto.rutaImagen}}" class="card-img-top"/>
-                            <div class="card-body">
-                                <h5 class="card-title">[[${producto.nombreProducto}]]</h5>
-                                <p class="card-text">[[${producto.descripcion}]]</p>
-                                <a
-                                    th:href="@{/producto/ver/}+${producto.idProducto}"
-                                    class="btn btn-primary"
-                                    >Ver Producto</a
-                                >
+            <div class="album py-3">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" th:if="${productos != null and !productos.empty}">
+                        <!--                        <span th:each="i : ${#numbers.sequence(0, 3)}"></span>-->
+                        <div class="col" th:each="producto : ${productos}">
+                            <div class="card shadow-sm" style="width: 18rem">
+                                <img th:src="@{${producto.rutaImagen}}" class="card-img-top"/>
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">[[${producto.nombreProducto}]]</h5>
+                                    <p class="card-text">[[${producto.descripcion}]]</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a type="button" 
+                                               class="btn btn-sm btn-outline-primary"
+                                               th:href="@{/producto/ver/}+${producto.idProducto}">Ver</a>
+                                            <button type="button" 
+                                                    class="btn btn-sm btn-outline-success">Agregar</button>
+                                        </div>
+                                        <small class="text-muted">₡[[${producto.precio}]]</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div
-                    class="text-center p-2"
-                    th:if="${productos == null or productos.empty}"
-                    >
-                    <span>[[#{lista.vacia}]]</span>
+                    <div
+                        class="text-center p-2"
+                        th:if="${productos == null or productos.empty}">
+                        <span>[[#{lista.vacia}]]</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-dark">
-            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+        <section th:fragment="botonesAgregar" class="py-4 mb-4">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-3">
                         <a th:href="@{/producto/agregar}">
