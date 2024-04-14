@@ -106,8 +106,16 @@ create table roles(
     foreign key (id_usuario) references usuario(id_usuario)
 );
 
-insert into producto(nombre_producto, descripcion, tipo, precio, ruta_imagen)
-select 'Galletas Nightmare Before Christmass', 'Tamaño: 10 cm Set: 5 Galletas', 'Tamaño Completo', 12500.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fjack%20cookies.jpg?alt=media&token=69200b94-fdd4-4dfd-a805-0cb634963f19'; 
+insert into producto(nombre_producto, descripcion, tipo, precio, ruta_imagen) values 
+('Galletas Nightmare Before Christmass', 'Tamaño: 10 cm Set: 5 Galletas', 'Tamaño Completo', 12500.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fjack%20cookies.jpg?alt=media&token=69200b94-fdd4-4dfd-a805-0cb634963f19'), 
+('Galletas Dinosaurios', 'Tamaño: 10 cm Set: 5 Galletas', 'Tamaño Completo', 11500.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fdinos.jpg?alt=media&token=7e1b071e-d2de-49a2-8eff-99e0c9dad6e1'),
+('One Piece', 'Tamaño: 10 cm Set: 6 Galletas', 'Tamaño Completo', 15000.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fone%20piece.jpg?alt=media&token=0f13abf4-333c-4f30-be3e-6a81d51fe9c5'),
+('San Valentin', 'Tamaño: 10 cm Set: 6 Galletas', 'Tamaño Completo', 11500.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fsan%20valentin.jpg?alt=media&token=843df1f6-c5c6-4dc0-bd09-f276132da7a5'),
+('Halloween', 'Tamaño: 6 cm Set: 8 Galletas', 'Tamaño Mini', 10000.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fhalloween.jpg?alt=media&token=d4b41bc9-0cc8-4441-8e03-0a7e493703ff'),
+('Navidad', 'Tamaño: 10 cm Set: 5 Galletas', 'Tamaño Completo', 12500.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fnavidad.jpg?alt=media&token=5eccb2e5-17f0-427c-8bc8-c2b93a63e91d'),
+('Pasito', 'Galletas Grandes: Tamaño: 8 cm, Pequeñas: 5 cm Set: 4 Galletas', 'Set Combinado', 8000.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fpasito.jpg?alt=media&token=543cc34d-3ae3-46ab-b72e-80aa88824ab7'),
+('Cascanueces', 'Tamaño: 10 cm Set: 3 Galletas', 'Tamaño Completo', 6000.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fcascanueces.jpg?alt=media&token=2e2df4c5-3f62-4324-82cb-521014f26495')
+; 
 
 use cookies_by_su;
 
