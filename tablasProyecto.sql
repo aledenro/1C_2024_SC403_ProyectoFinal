@@ -109,7 +109,9 @@ create table roles(
 insert into producto(nombre_producto, descripcion, tipo, precio, ruta_imagen)
 select 'Galletas Nightmare Before Christmass', 'Tamaño: 10 cm Set: 5 Galletas', 'Tamaño Completo', 12500.00, 'https://firebasestorage.googleapis.com/v0/b/cookies-by-su.appspot.com/o/cookies_by_Su%2Fproductos%2Fjack%20cookies.jpg?alt=media&token=69200b94-fdd4-4dfd-a805-0cb634963f19'; 
 
+
 use cookies_by_su;
+
 
 delete from usuario where id_usuario = 1;
 

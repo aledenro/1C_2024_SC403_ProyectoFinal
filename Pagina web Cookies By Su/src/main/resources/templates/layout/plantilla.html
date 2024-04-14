@@ -17,9 +17,9 @@
     <body>
 
         <header th:fragment="header" class="header" id="usuario">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary rounded">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary rounded m-2 p-2">
                 <div class="container-fluid">
-
+                    <a th:href="@{/}" class="navbar-brand col-lg-3 me-0">[[#{aplicacion.titulo}]]</a>
                     <button class="navbar-toggler"
                             type="button"
                             data-bs-toggle="collapse"
@@ -28,7 +28,6 @@
                     </button>
 
                     <div class="collapse navbar-collapse d-lg-flex" id="navbarCollapse">
-                        <a th:href="@{/}" class="navbar-brand col-lg-3 me-0">[[#{aplicacion.titulo}]]</a>
                         <ul class="navbar-nav col-lg-6 justify-content-lg-center">
                             <li class="nav-item">
                                 <a class="nav-link" th:href="@{/}">[[#{plantilla.catalogo}]]</a>
@@ -56,7 +55,8 @@
                         <div class="d-lg-flex col-lg-3 justify-content-lg-end">
                             <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
                                 <li class="nav-item px-2 text-white my-auto">
-                                    <a class="nav-link" th:href="@{/login}">[[#{login.login}]]</a>
+                                    <a class="btn btn-primary" role="button" th:href="@{/login}">[[#{login.login}]]</a>
+                                    
                                 </li>
                             </ul>
                             <ul class="navbar-nav" sec:authorize="isAuthenticated()">

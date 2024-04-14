@@ -11,50 +11,38 @@
     <body>
 
         <header th:replace="~{layout/plantilla :: header}"/>
+
         <div class="row m-5 justify-content-md-center">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header bg-success text-white">
-                        <h2>[[#{login.login}]]</h2>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <div class="rounded-4 shadow text-center">
+                    <div class="card-header p-5 pb-4 border-bottom-0">
+                        <h1 class="fw-bold mb-0 fs-2">[[#{login.login}]]</h1>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body p-5 pt-0">
                         <form method="post" 
                               th:action="@{/login}">
-                            <div class="row my-3 form-group">
-                                <label class="col-md-5" for="username">
-                                    <i class="fas fa-user-lock"></i> [[#{login.username}]]</label>
-                                <div class="col-md-7">
-                                    <input class="form-control"
-                                           type="text"
-                                           name="username"/><br/>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control rounded-3" id="username" name="username" placeholder="Username"/>
+                                <label for="username">[[#{login.username}]]</label>
                             </div>
-                            <div class="row my-3 form-group">
-                                <label class="col-md-5" for="password">
-                                    <i class="fas fa-key"></i>[[#{login.password}]]</label>
-                                <div class="col-md-7">
-                                    <input class="form-control"
-                                           type="password" 
-                                           name="password"/><br/>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control rounded-3" id="password" name="password"placeholder="Password"/>
+                                <label for="password">[[#{login.password}]]</label>
                             </div>
-
-                            <div class="card-footer col text-center">
-                                <button class="btn btn-primary">
-                                    <a th:href="@{/registro/nuevo}" class="btn">
-                                        <i class="fas fa-user-plus"></i>[[#{accion.registrar}]]</a></button>
-                                <button class="btn btn-info">                                        
-                                    <a th:href="@{/registro/recordar}" class="btn">
-                                        <i class="fas fa-envelope"></i> [[#{accion.recordar}]]</a></button>
-                                <button class="btn btn-success bg-opacity-20" type="submit">
-                                    <span class="btn"><i class="fas fa-sign-in-alt"></i>
-                                        [[#{login.login}]]</span></button>
+                            <div class="mb-3">
+                                <small class="text-body-secondary">¿Olvidaste tu contraseña?</small>
+                                <a th:href="@{/registro/recordar}">[[#{accion.recordar}]]</a>
                             </div>
+                            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">
+                                <span class="btn text-white fs-5">[[#{login.login}]]</span></button>
+                            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-secondary">
+                                <a th:href="@{/registro/nuevo}" class="btn text-white fs-5">[[#{accion.registrar}]]</a></button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>

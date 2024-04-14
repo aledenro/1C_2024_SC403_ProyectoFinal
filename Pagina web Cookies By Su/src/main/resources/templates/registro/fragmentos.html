@@ -19,37 +19,46 @@
                     </section>
                 </div>
             </div>
-            <div class="row py-2 justify-content-center">
-                <div class="col-md-3">
-                    <form method="POST" th:action="@{/registro/crearUsuario}" th:object="${usuario}" class="was-validated">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>[[#{usuario.agregar}]]</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="username">[[#{usuario.username}]]</label>
-                                    <input type="text" class="form-control" name="username" th:field="*{username}" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nombre">[[#{usuario.nombre}]]</label>
-                                    <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="apellidos">[[#{usuario.apellidos}]]</label>
-                                    <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email">[[#{usuario.correo}]]</label>
-                                    <input type="email" class="form-control" name="correo" th:field="*{correoElectronico}" required="true"/>
-                                </div>
-                            </div>
-                            <div class="card-footer text-end">                                                
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-envelope"></i> [[#{usuario.activacion}]]
-                                </button></div>
+            <div class="row m-5 justify-content-md-center">
+                <div class="col-sm-6 col-lg-4 mb-3">
+                    <div class="rounded-4 shadow text-center">
+                        <div class="card-header p-5 pb-4 border-bottom-0">
+                            <h1 class="fw-bold mb-0 fs-2">[[#{usuario.agregar}]]</h1>
                         </div>
-                    </form>
+                        <div class="card-body p-5 pt-0">
+                            <form method="POST" 
+                                  th:action="@{/registro/crearUsuario}" 
+                                  th:object="${usuario}" 
+                                  class="was-validated">
+                                <div class="form-floating mb-3">
+                                    <label for="username">[[#{usuario.username}]]</label>
+                                    <input type="text" class="form-control rounded-3" id="username" name="username" th:field="*{username}" required="true"/>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <label for="nombre">[[#{usuario.nombre}]]</label>
+                                    <input type="text" class="form-control rounded-3" name="nombre" th:field="*{nombre}" required="true"/>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <label for="apellidos">[[#{usuario.apellidos}]]</label>
+                                    <input type="text" class="form-control rounded-3" name="apellidos" th:field="*{apellidos}" required="true"/>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <label for="email">[[#{usuario.correo}]]</label>
+                                    <input type="email" class="form-control rounded-3" name="correo" th:field="*{correoElectronico}" required="true"/>
+                                </div>                                             
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button class="w-100 mb-2 btn rounded-3 btn-secondary">
+                                            <a th:href="@{/login}" class="btn text-white fs-5"> [[#{accion.regresar}]]</a></button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="submit" class="w-100 mb-2 btn rounded-3 btn-primary">
+                                    <span class="btn text-white fs-5">[[#{usuario.activacion}]]</span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

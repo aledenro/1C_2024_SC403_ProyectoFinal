@@ -64,59 +64,5 @@
                 </div>
             </div>
 
-
-            <!--        <header th:fragment="header" class="header rounded" id="header">
-            <nav class="navbar navbar-expand bg-body-tertiary rounded">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse d-lg-flex" id="navbarCollapse">
-                        <a th:href="@{/}" class="navbar-brand col-lg-3 me-0">[[#{aplicacion.titulo}]]</a>
-                        <ul class="navbar-nav col-lg-6 justify-content-lg-center">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/}">[[#{plantilla.catalogo}]]</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/personalizado/verForm}">[[#{plantilla.personalizar}]]</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/nosotros/sobreNosotros}">[[#{plantilla.aboutus}]]</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/contacto/contactenos}">[[#{plantilla.contactenos}]]</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" role="button">[[#{plantilla.idioma}]]</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" th:href="@{/(lang=es)}">ES</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
-                                        <li class="nav-item px-2 text-white my-auto">
-                                            <a class="nav-link" th:href="@{/login}">Log In</a>
-                                        </li>
-                                    </ul>
-                        <div class="d-lg-flex col-lg-3 justify-content-lg-end" sec:authorize="!isAuthenticated()">
-                            <ul>
-                                <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/personalizado/verForm}">[[#{plantilla.personalizar}]]</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/nosotros/sobreNosotros}">[[#{plantilla.aboutus}]]</a>
-                                </li>
-                            </ul>
-
-                            <button class="btn btn-primary" th:href="@{/login}" >LogIn</button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>-->
-
-
-
     </body>
 </html>
