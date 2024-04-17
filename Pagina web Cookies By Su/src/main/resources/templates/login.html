@@ -22,21 +22,23 @@
                         <form method="post" 
                               th:action="@{/login}">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-3" id="username" name="username" placeholder="Username"/>
+                                <input class="form-control rounded-3" type="text"  name="username" placeholder="Username"/>
                                 <label for="username">[[#{login.username}]]</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control rounded-3" id="password" name="password"placeholder="Password"/>
+                                <input class="form-control rounded-3" type="password" name="password" placeholder="Password"/>
                                 <label for="password">[[#{login.password}]]</label>
                             </div>
-                            <div class="mb-3">
-                                <small class="text-body-secondary">¿Olvidaste tu contraseña?</small>
-                                <a th:href="@{/registro/recordar}">[[#{accion.recordar}]]</a>
+                            <div class="card-footer col text-center">
+                                <div class="mb-3">
+                                    <small class="text-body-secondary">¿Olvidaste tu contraseña?</small>
+                                    <a th:href="@{/registro/recordar}">[[#{accion.recordar}]]</a>
+                                </div>
+                                <button class="w-100 mb-2 btn btn-primary" type="submit">
+                                    <span class="w-100 m-0">[[#{login.login}]]</span></button>
+                                <button class="w-100 mb-2 btn btn-outline-secondary p-0">
+                                    <a th:href="@{/registro/nuevo}" class="btn w-100">[[#{accion.registrar}]]</a></button>
                             </div>
-                            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">
-                                <span class="btn text-white fs-5">[[#{login.login}]]</span></button>
-                            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-secondary">
-                                <a th:href="@{/registro/nuevo}" class="btn text-white fs-5">[[#{accion.registrar}]]</a></button>
                         </form>
                     </div>
                 </div>
