@@ -2,9 +2,11 @@ package com.cookiesbysu.service.impl;
 
 import com.cookiesbysu.domain.Item;
 import com.cookiesbysu.service.ItemService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ItemServiceImpl implements ItemService {
     @Override
     public List<Item> gets() {
@@ -25,7 +27,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void delete(Item item) {
         boolean existe = false;
-        int posicion = 0;
+        int posicion = -1;
 
         for (Item i : listaItems) {
             posicion++;

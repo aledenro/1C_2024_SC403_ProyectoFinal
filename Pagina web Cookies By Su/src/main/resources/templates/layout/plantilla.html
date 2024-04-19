@@ -56,7 +56,10 @@
                             <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
                                 <li class="nav-item px-2 text-white my-auto">
                                     <a class="btn btn-primary" role="button" th:href="@{/login}">[[#{login.login}]]</a>
-                                    
+
+                                </li>
+                                <li class="nav-item px-2 text-white my-auto">
+                                    <div id="resultsBlock"></div>
                                 </li>
                             </ul>
                             <ul class="navbar-nav" sec:authorize="isAuthenticated()">
@@ -105,11 +108,17 @@
                                     <p class="card-text">[[${producto.descripcion}]]</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a type="button" 
+                                            <a type="button"
                                                class="btn btn-sm btn-outline-primary"
                                                th:href="@{/producto/ver/}+${producto.idProducto}"><i class="fa-solid fa-cookie-bite"></i> [[#{producto.ver}]]</a>
-                                            <button type="button" 
-                                                    class="btn btn-sm btn-outline-success"><i class="fa-solid fa-cart-plus"></i> [[#{producto.agregar}]]</button>
+                                            <form action="">
+                                                <input type="hidden" name="idProducto" th:value="${producto.idProducto}" />
+                                            <button type="button"
+                                                    class="btn btn-sm btn-outline-success" id="addCart"
+                                                    name="addCart"
+                                                    onclick="addCard(this.form)"
+                                                    ><i class="fa-solid fa-cart-plus"></i> [[#{producto.agregar}]]</button>
+                                            </form>
                                         </div>
                                         <small class="text-muted">₡[[${producto.precio}]]</small>
                                     </div>
