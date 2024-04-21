@@ -22,16 +22,16 @@
                         <form method="post" 
                               th:action="@{/login}">
                             <div class="form-floating mb-3">
-                                <input class="form-control rounded-3" type="text"  name="username" placeholder="Username"/>
+                                <input class="form-control rounded-3" type="text"  name="username" placeholder="Usuario"/>
                                 <label for="username">[[#{login.username}]]</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control rounded-3" type="password" name="password" placeholder="Password"/>
+                                <input class="form-control rounded-3" type="password" name="password" placeholder="Contraseña"/>
                                 <label for="password">[[#{login.password}]]</label>
                             </div>
                             <div class="card-footer col text-center">
                                 <div class="mb-3">
-                                    <small class="text-body-secondary">¿Olvidaste tu contraseña?</small>
+                                    <small class="text-body-secondary">[[#{login.recordar}]]</small>
                                     <a th:href="@{/registro/recordar}">[[#{accion.recordar}]]</a>
                                 </div>
                                 <button class="w-100 mb-2 btn btn-primary" type="submit">

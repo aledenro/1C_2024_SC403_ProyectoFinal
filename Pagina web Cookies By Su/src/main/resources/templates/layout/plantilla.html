@@ -14,7 +14,7 @@
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         <script th:src="@{/js/rutinas.js}"></script>
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
 
         <header th:fragment="header" class="header" id="usuario">
             <nav class="navbar navbar-expand-lg bg-body-tertiary rounded m-2 p-3">
@@ -52,10 +52,10 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+                        <div class="d-flex col-lg-3 justify-content-end">
                             <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
                                 <li class="nav-item px-2 text-white my-auto">
-                                    <a class="btn btn-primary" role="button" th:href="@{/login}">[[#{login.login}]]</a>
+                                    <a class="btn btn-outline-primary" role="button" th:href="@{/login}">[[#{login.login}]]</a>
                                     
                                 </li>
                             </ul>
@@ -66,7 +66,7 @@
                                 </li>
                                 <li class="nav-item px-2 text-white my-auto">
                                     <form method="post" th:action="@{/logout}">
-                                        <button class="btn btn-dark">[[#{login.logout}]]</button>
+                                        <button class="btn btn-light">[[#{login.logout}]]</button>
                                     </form>
                                 </li>
                             </ul>
@@ -140,7 +140,7 @@
             </div>
         </section>
 
-        <footer th:fragment="footer" class="flex-shrink-0 py-4 bg-danger bg-opacity-10 text-secondary">
+        <footer th:fragment="footer" class="flex-shrink-0 py-4 bg-danger bg-opacity-10 text-secondary mt-auto">
             <div class="container text-center">
                 <div class="col">
                     <p>&COPY; [[#{plantilla.derechos}]]</p>
