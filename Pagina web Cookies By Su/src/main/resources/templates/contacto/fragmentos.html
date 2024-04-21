@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html
     xmlns="http://www.w3.org/1999/xhtml"
@@ -10,35 +11,41 @@
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
 
         <section th:fragment="formContacto">
-            <div class="container">
-                <p class="h2 mt-4">[[#{contacto.titulo}]]</p>
-                <form th:action="@{/contacto/enviar}" th:object="${contacto}"
-                      method="POST" class="was-validated" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="inputCorreo" class="form-label mt-2">[[#{personalizado.correo}]]</label>
-                            <input type="email" class="form-control" id="inputCorreo" th:field="*{correoElectronico}">
-                        </div>
-                        <div class="form-group row g-3">
-                            <div class="col">
-                                <label for="inputNombre" class="form-label mt-2">[[#{personalizado.nombre}]]</label>
-                                <input type="text" class="form-control" id="inputNombre" th:field="*{nombre}" placeholder="Nombre">
+            <div class="row justify-content-md-center">
+                <div class="col-sm-8 col-lg-6 mb-3">
+                    <div class="container">
+                        <h1 class="fw-bold mt-3 fs-2 text-center">[[#{contacto.titulo}]]</h1>
+                        <form th:action="@{/contacto/enviar}" 
+                              th:object="${contacto}"
+                              method="POST" 
+                              class="was-validated" 
+                              enctype="multipart/form-data">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="inputCorreo" class="form-label mt-2">[[#{personalizado.correo}]]</label>
+                                    <input type="email" class="form-control" id="inputCorreo" th:field="*{correoElectronico}">
+                                </div>
+                                <div class="form-group row g-3">
+                                    <div class="col">
+                                        <label for="inputNombre" class="form-label mt-2">[[#{personalizado.nombre}]]</label>
+                                        <input type="text" class="form-control" id="inputNombre" th:field="*{nombre}" placeholder="Nombre">
+                                    </div>
+                                    <div class="col">
+                                        <label for="inputApellidos" class="form-label mt-2">[[#{personalizado.apellidos}]]</label>
+                                        <input type="text" class="form-control" id="inputApellidos" th:field="*{apellidos}" placeholder="Apellidos" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="textAreaDescripcion" class="form-label mt-2">[[#{personalizado.descripcion}]]</label>
+                                    <textarea class="form-control" id="textAreaDescripcion" rows="3" th:field="*{mensaje}"></textarea>
+                                </div>
                             </div>
-                            <div class="col">
-                                <label for="inputApellidos" class="form-label mt-2">[[#{personalizado.apellidos}]]</label>
-                                <input type="text" class="form-control" id="inputApellidos" th:field="*{apellidos}" placeholder="Apellidos" >
+                            <div class="modal-footer my-2">
+                                <button class="btn btn-primary" type="submit">[[#{accion.enviar}]]</button>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="textAreaDescripcion" class="form-label mt-2">[[#{personalizado.descripcion}]]</label>
-                            <textarea class="form-control" id="textAreaDescripcion" rows="3" th:field="*{mensaje}"></textarea>
-                        </div>
+                        </form>
                     </div>
-                    <div class="modal-footer my-2">
-                        <button class="btn btn-primary" type="submit">[[#{accion.enviar}]]</button>
-                    </div>
-                </form>
-            </div>
+                </div>
         </section>
 
         <!-- 2 Se muestra despues de enviar el correo de confirmacion-->
