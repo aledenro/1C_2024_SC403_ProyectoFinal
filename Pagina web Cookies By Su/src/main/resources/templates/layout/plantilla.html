@@ -7,6 +7,7 @@
     <head th:fragment="head">
         <title>Cookies By Su</title>
         <meta charset="UTF-8"/>
+        <link rel="shortcut icon" href="" type="image/png"/>
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" href="url"/>
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" href="url"/>
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -20,15 +21,16 @@
             <nav class="navbar navbar-expand-lg bg-body-tertiary rounded m-2 p-3">
                 <div class="container-fluid">
                     <a th:href="@{/}" class="navbar-brand col-lg-3 me-0">[[#{aplicacion.titulo}]]</a>
-                    <button class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarCollapse">
+                    <button class="navbar-toggler" 
+                            type="button" 
+                            data-bs-toggle="collapse" 
+                            aria-expanded="false" 
+                            aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse d-lg-flex" id="navbarCollapse">
-                        <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
                             <li class="nav-item">
                                 <a class="nav-link" th:href="@{/}">[[#{plantilla.catalogo}]]</a>
                             </li>
@@ -52,16 +54,19 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="d-flex col-lg-3 justify-content-end">
+                        <div class="d-flex col-md-3 justify-content-end">
                             <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
-                                <li class="nav-item px-2 text-white my-auto">
-                                    <a class="btn btn-outline-primary" role="button" th:href="@{/login}">[[#{login.login}]]</a>
-                                </li>
                                 <li class="nav-item px-2 text-white my-auto">
                                     <div id="resultsBlock"></div>
                                 </li>
+                                <li class="nav-item px-2 text-white my-auto">
+                                    <a class="btn btn-outline-primary" role="button" th:href="@{/login}">[[#{login.login}]]</a>
+                                </li>
                             </ul>
                             <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                <li class="nav-item px-2 text-white my-auto">
+                                    <div id="resultsBlock"></div>
+                                </li>
                                 <li class="nav-item px-2 text-white my-auto">
                                     <a class="nav-link" th:href="@{/perfil/verPerfil(username=${username})}">
                                         <span sec:authentication="name">a</span></a>
@@ -112,11 +117,11 @@
                                                th:href="@{/producto/ver/}+${producto.idProducto}"><i class="fa-solid fa-cookie-bite"></i> [[#{producto.ver}]]</a>
                                             <form action="">
                                                 <input type="hidden" name="idProducto" th:value="${producto.idProducto}" />
-                                            <button type="button"
-                                                    class="btn btn-sm btn-outline-success" id="addCart"
-                                                    name="addCart"
-                                                    onclick="addCard(this.form)"
-                                                    ><i class="fa-solid fa-cart-plus"></i> [[#{producto.agregar}]]</button>
+                                                <button type="button"
+                                                        class="btn btn-sm btn-outline-success" id="addCart"
+                                                        name="addCart"
+                                                        onclick="addCard(this.form)"
+                                                        ><i class="fa-solid fa-cart-plus"></i> [[#{producto.agregar}]]</button>
                                             </form>
                                         </div>
                                         <small class="text-muted">₡[[${producto.precio}]]</small>
