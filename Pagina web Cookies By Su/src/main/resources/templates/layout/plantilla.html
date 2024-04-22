@@ -68,7 +68,7 @@
                                 </li>
                                 <li class="nav-item px-2 text-white my-auto">
                                     <form method="post" th:action="@{/logout}">
-                                        <button class="btn btn-light">[[#{login.logout}]]</button>
+                                        <button class="btn btn-outline-dark">[[#{login.logout}]]</button>
                                     </form>
                                 </li>
                             </ul>
@@ -100,8 +100,8 @@
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" th:if="${productos != null and !productos.empty}">
                         <!--                        <span th:each="i : ${#numbers.sequence(0, 3)}"></span>-->
                         <div class="col" th:each="producto : ${productos}">
-                            <div class="card shadow-sm" style="width: 18rem">
-                                <img th:src="@{${producto.rutaImagen}}" class="card-img-top"/>
+                            <div class="card shadow-sm">
+                                <img th:src="@{${producto.rutaImagen}}" class="card-img-top" width="100%"/>
                                 <div class="card-body">
                                     <h5 class="card-title text-center">[[${producto.nombreProducto}]]</h5>
                                     <p class="card-text">[[${producto.descripcion}]]</p>

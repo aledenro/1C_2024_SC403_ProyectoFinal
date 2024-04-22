@@ -9,45 +9,6 @@
     <body>
 
         <!-- html vista detallada producto -->
-        <section th:fragment="productosDisplay" id="producto">
-            <div class="container px-4">
-                <div class="row gx-5">
-                    <div class="col">
-                        <div class="p-3">
-                            <img
-                                th:src="@{${producto.rutaImagen}}"
-                                class="rounded"
-                                style="height: 500px"
-                                />
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="p-3">
-                            <h2>[[${producto.nombreProducto}]]</h2>
-                            <br />
-                            <h5>[[${producto.precio}]]</h5>
-                            <br />
-                            <p>[[${producto.descripcion}]]</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a
-                        th:href="@{/producto/eliminar/}+${producto.idProducto}"
-                        class="btn btn-danger"
-                        >
-                        <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a
-                    >
-                    <a
-                        th:href="@{/producto/modificar/}+${producto.idProducto}"
-                        class="btn btn-success"
-                        >
-                        <i class="fas fa-pencil"></i>
-                        [[#{accion.actualizar}]]</a
-                    >
-                </div>
-            </div>
-        </section>
 
         <section class="py-5" th:fragment="productosDisplay" id="producto">
             <div class="container px-4 px-lg-5 my-5">
@@ -131,41 +92,43 @@
         </section>
 
         <section th:fragment="agregarProducto">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="card-header">
-                        <h5>[[#{producto.agregar}]]</h5>
-                    </div> 
-                    <form th:action="@{/producto/guardar}" th:object="${producto}"
-                          method="POST" class="was-validated" enctype="multipart/form-data">
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="nombreProducto">[[#{producto.nombre}]]</label>
-                                <input type="text" class="form-control" name="nombreProducto" required="true"/>
+            <div class="row justify-content-md-center">
+                <div class="col-sm-8 col-lg-6 mb-3">
+                    <div class="container">
+                        <h1 class="fw-bold my-4 fs-2 text-center">[[#{producto.agregar}]]</h1>
+                        <form th:action="@{/producto/guardar}" 
+                              th:object="${producto}"
+                              method="POST" 
+                              class="was-validated" 
+                              enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="nombreProducto">[[#{producto.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombreProducto" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion">[[#{producto.descripcion}]]</label>
+                                    <textarea class="form-control" name="descripcion" rows="3" required="true"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tipo">[[#{producto.tipo}]]</label>
+                                    <input type="text" class="form-control" name="tipo" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precio">[[#{producto.precio}]]</label>
+                                    <input type="number" class="form-control" name="precio" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rutaImagen">[[#{producto.imagen}]]</label>
+                                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" required="true"/>
+                                    <img class="rounded mx-auto d-block mt-3"  id="blah" src="#" alt="your image" height="200"/>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="descripcion">[[#{producto.descripcion}]]</label>
-                                <textarea type="text" class="form-control" name="descripcion" rows="3" required="true"></textarea>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">[[#{producto.guardar}]]</button>
                             </div>
-                            <div class="mb-3">
-                                <label for="tipo">[[#{producto.tipo}]]</label>
-                                <input type="text" class="form-control" name="tipo" required="true"/>
-                            </div>
-                            <div class="mb-3">
-                                <label for="precio">[[#{producto.precio}]]</label>
-                                <input type="number" class="form-control" name="precio" required="true"/>
-                            </div>
-                            <div class="mb-3">
-                                <label for="rutaImagen">[[#{producto.imagen}]]</label>
-                                <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" required="true"/>
-                                <img id="blah" src="#" alt="your image" height="200"/>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit">[[#{producto.guardar}]]</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -175,25 +138,27 @@
         <!-- botones de editar -->
 
         <section th:fragment="botonesEditar">
-            <div class="container py-4 mb-4 bg-light">
-                <div class="row">
-                    <div class="col-md-4 d-grid">
-                        <a th:href="@{/}" class="btn btn-primary">
-                            <i class="fa-solid fa-arrow-left"></i> [[#{accion.regresar}]]
-                        </a>
-                    </div>
-                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a
-                            th:href="@{/producto/eliminar/}+${producto.idProducto}"
-                            class="btn btn-danger"
-                            >
-                            <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
-                        </a>
-                    </div>
-                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
-                        </button>
+            <div class="container py-4 mb-4">
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-8 col-lg-6 mb-3">
+                        <div class="row">
+                            <div class="col-md-4 d-grid">
+                                <a th:href="@{/}" class="btn btn-primary">
+                                    <i class="fa-solid fa-arrow-left"></i> [[#{accion.regresar}]]
+                                </a>
+                            </div>
+                            <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
+                                   class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
+                                </a>
+                            </div>
+                            <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa-solid fa-floppy-disk"></i> [[#{accion.guardar}]]
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
