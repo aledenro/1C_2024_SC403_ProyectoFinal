@@ -3,18 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/plantilla :: head}">
-    <title>Cookies By Su</title>
-</head>
-<body>
-<header th:replace="~{layout/plantilla :: header}"/>
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Cookies By Su</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <header th:replace="~{layout/plantilla :: header}"/>
 
-<section th:replace="~{layout/plantilla :: catalogoHero}"></section>
-<section th:replace="~{layout/plantilla :: botonesAgregar}" sec:authorize="hasRole('ROLE_ADMIN')"></section>
-<section th:replace="~{layout/plantilla :: productosDisplay}"></section>
+        <section th:replace="~{layout/plantilla :: catalogoHero}"></section>
+        <section th:replace="~{layout/plantilla :: botonesAgregar}" sec:authorize="hasRole('ROLE_ADMIN')"></section>
+        <section th:replace="~{layout/plantilla :: productosDisplay}"></section>
 
 
-<footer th:replace="~{layout/plantilla :: footer}"/>
+        <footer th:replace="~{layout/plantilla :: footer}"/>
 
-</body>
+    </body>
 </html>
