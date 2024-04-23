@@ -14,9 +14,7 @@
             <div class="row justify-content-md-center">
                 <div class="col-sm-8 col-lg-6 mb-3">
                     <div class="container">
-                        <h1 class="fw-bold mt-3 fs-2 text-center">
-                            [[#{personalizado.titulo}]]
-                        </h1>
+                        <h1 class="mt-3 fs-2 text-center" style="font-family: 'Antonio'; color:#dfa0a0; font-weight: bold">[[#{personalizado.titulo}]]</h1>
                         <form
                             th:action="@{/personalizado/guardar}"
                             th:object="${pedidoP}"
@@ -115,7 +113,7 @@
                                         />
                                 </div>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer d-flex justify-content-end">
                                 <button class="btn btn-primary my-2" type="submit">
                                     [[#{accion.enviar}]]
                                 </button>
@@ -152,7 +150,8 @@
         <section th:fragment="listadoPedidosP" id="pedidosP">
             <div class="container-md">
                 <div class="row">
-                    <h2 class="fw-bold my-2 fs-2 text-center">
+                    <h2 class="fw-bold my-2 fs-2 text-center"
+                        style="font-family: 'Antonio'">
                         [[#{personalizado.listado}]]
                     </h2>
                 </div>

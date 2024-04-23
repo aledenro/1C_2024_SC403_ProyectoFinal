@@ -1,0 +1,21 @@
+.btn.btn-outline-pink{
+    background-color: transparent;
+    border: 1px solid #dfa0a0;
+    color: #dfa0a0;
+}
+
+.btn.btn-outline-pink:hover {
+    background-color: #dfa0a0;
+    border: 1px solid #3F2C31;
+    color: #3F2C31;
+}
+
+
+/*verde 9fc56b
+gris oscuro 6c757d
+gris claro f8f9fa
+crema F2ECE5
+pale rose EFCFCF 
+rosy brown #dfa0a0
+negro #3F2C31
+dark red #CC3939*/

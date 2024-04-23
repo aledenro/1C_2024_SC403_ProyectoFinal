@@ -11,7 +11,7 @@
     <!-- 2 fragmento para ver los productos en el carrito -->
     <section th:fragment="verCarrito" th:unless="${#lists.isEmpty(listaItems)}">
       <form action="/carrito/listado">
-        <button class="btn btn-primary">
+        <button class="btn btn-sm btn-primary">
           <i class="fas fa-cart-plus"></i> [[#{carrito.verCarrito}]]
           [[${listaTotal}]]
         </button>
@@ -23,7 +23,8 @@
       <div class="container">
         <div class="row g-5 justify-content-md-center">
           <div class="col-md-7">
-            <h2 class="fw-bold my-3 fs-2 text-center">[[#{carrito.titulo}]]</h2>
+            <h2 class="fw-bold my-3 fs-2 text-center"
+                style="font-family: 'Antonio'">[[#{carrito.titulo}]]</h2>
             <div
               th:if="${listado != null and !listado.empty}"
               class="container"
@@ -105,7 +106,8 @@
             </div>
           </div>
           <div class="col-md-4 order-md-last">
-            <h5 class="fw-bold my-3 fs-2 text-center">
+            <h5 class="fw-bold my-3 fs-2 text-center"
+                style="font-family: 'Antonio'">
               [[#{carrito.resumen}]]
             </h5>
             <div th:if="${listado != null and !listado.empty}">
