@@ -9,104 +9,114 @@
     </head>
     <body>
         <section th:fragment="listadoOrden" id="items">
-            <div class="row">
-                <div class="col-md-3">
-                    <form action="/carrito/listado">
-                        <button class="btn btn-primary">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="container">
-                <div class="col-md-12 order-md-last">
-                    <h5 class="fw-bold my-3 fs-2 text-center">[[#{orden.titulo}]]</h5>
-                    <div th:if="${listado != null and !listado.empty}">
-                        <ul class="list-group mb-3">
-                            <li
-                                class="list-group-item d-flex justify-content-between lh-sm"
-                                th:each="item, contador : ${listado}"
-                                >
-                                <div>
-                                    <h6 class="my-0">[[${item.nombreProducto}]]</h6>
-                                    <small class="text-muted">x[[${item.cantidad}]]</small>
-                                </div>
-                                <span class="text-muted"
-                                      >₡[[${item.precio*item.cantidad}]]</span
-                                >
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>[[#{carrito.subtotal}]]</span>
-                                <strong>₡[[${totalCarrito}]]</strong>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>[[#{carrito.iva}]]</span>
-                                <strong>₡[[${iva}]]</strong>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>[[#{carrito.total}]]</span>
-                                <strong>₡[[${totalIva}]]</strong>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <form
-                    th:action="@{/facturar/finalizar}"
-                    th:object="${facturacion}"
-                    method="POST"
-                    class="was-validated"
-                    enctype="multipart/form-data"
-                    >
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="form-group row g-3">
-                                <div class="col">
-                                    <label for="radioPago" class="form-label mt-2">[[#{orden.formaPago}]]</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="SINPE Movil" name="formaPago" id="formaPago" th:field="*{formaPago}" required="true"/>
-                                        <label class="form-check-label" for="formaPago">
-                                            [[#{orden.sinpe}]]
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="Transferencia" name="formaPago" id="formaPago" th:field="*{formaPago}" required="true"/>
-                                        <label class="form-check-label" for="formaPago">
-                                            [[#{orden.banco}]]
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <label for="inputFecha" class="form-label mt-2"
-                                           >[[#{orden.fechaEntrega}]]</label
-                                    >
-                                    <input
-                                        type="date"
-                                        id="date"
-                                        class="form-control"
-                                        th:field="*{fechaEntrega}"
-                                        />
-                                </div>
+            <div class="row justify-content-md-center">
+                <div class="col-sm-8 col-lg-6 mb-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <form action="/carrito/listado">
+                                    <button class="btn btn-primary ml-auto my-3">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                    </button>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <label for="textAreaDescripcion" class="form-label mt-2"
-                                       >[[#{pedido.direccion}]]</label
-                                >
-                                <textarea
-                                    class="form-control"
-                                    id="direccionDetallada"
-                                    rows="3"
-                                    th:field="*{direccionDetallada}"
-                                    placeholder="Provincia, Cantón, Distrito, Señas..."
-                                    ></textarea>
+                            <div class="col">
+                                <h5 class="my-3 fs-2 text-center"
+                                    style="font-family: 'Antonio'">[[#{orden.titulo}]]</h5>
+
                             </div>
-                            <div class="card-footer">
-                                <button class="btn btn-primary my-2" type="submit">
-                                    [[#{accion.enviar}]]
-                                </button>
+                            <div class="col">
                             </div>
                         </div>
+                        <div th:if="${listado != null and !listado.empty}">
+                            <ul class="list-group mb-3">
+                                <li
+                                    class="list-group-item d-flex justify-content-between lh-sm"
+                                    th:each="item, contador : ${listado}"
+                                    >
+                                    <div>
+                                        <h6 class="my-0">[[${item.nombreProducto}]]</h6>
+                                        <small class="text-muted">x[[${item.cantidad}]]</small>
+                                    </div>
+                                    <span class="text-muted"
+                                          >₡[[${item.precio*item.cantidad}]]</span
+                                    >
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>[[#{carrito.subtotal}]]</span>
+                                    <strong>₡[[${totalCarrito}]]</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>[[#{carrito.iva}]]</span>
+                                    <span>₡[[${iva}]]</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>[[#{carrito.total}]]</span>
+                                    <strong>₡[[${totalIva}]]</strong>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </form>
+                    <div class="container">
+                        <form
+                            th:action="@{/facturar/finalizar}"
+                            th:object="${facturacion}"
+                            method="POST"
+                            class="was-validated"
+                            enctype="multipart/form-data"
+                            >
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <div class="form-group row g-3">
+                                        <div class="col">
+                                            <label for="radioPago" class="form-label mt-2">[[#{orden.formaPago}]]</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="SINPE Movil" name="formaPago" id="formaPago" th:field="*{formaPago}" required="true"/>
+                                                <label class="form-check-label" for="formaPago">
+                                                    [[#{orden.sinpe}]]
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="Transferencia" name="formaPago" id="formaPago" th:field="*{formaPago}" required="true"/>
+                                                <label class="form-check-label" for="formaPago">
+                                                    [[#{orden.banco}]]
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="inputFecha" class="form-label mt-2"
+                                                   >[[#{orden.fechaEntrega}]]</label
+                                            >
+                                            <input
+                                                type="date"
+                                                id="date"
+                                                class="form-control"
+                                                th:field="*{fechaEntrega}"
+                                                />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="textAreaDescripcion" class="form-label mt-2"
+                                               >[[#{pedido.direccion}]]</label
+                                        >
+                                        <textarea
+                                            class="form-control"
+                                            id="direccionDetallada"
+                                            rows="3"
+                                            th:field="*{direccionDetallada}"
+                                            placeholder="Provincia, Cantón, Distrito, Señas..."
+                                            ></textarea>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-end">
+                                        <button class="btn my-2" type="submit" style="background-color: #dfa0a0; color:white">
+                                            [[#{accion.enviar}]]
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <script>
                 let minDate = new Date();

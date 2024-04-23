@@ -14,7 +14,7 @@
             <div class="row justify-content-md-center">
                 <div class="col-sm-8 col-lg-6 mb-3">
                     <div class="container">
-                        <h1 class="fw-bold mt-3 fs-2 text-center">[[#{contacto.titulo}]]</h1>
+                        <h1 class="mt-3 fs-2 text-center" style="font-family: 'Antonio'; color:#dfa0a0; font-weight: bold">[[#{contacto.titulo}]]</h1>
                         <form th:action="@{/contacto/enviar}" 
                               th:object="${contacto}"
                               method="POST" 
@@ -40,7 +40,7 @@
                                     <textarea class="form-control" id="textAreaDescripcion" rows="3" th:field="*{mensaje}"></textarea>
                                 </div>
                             </div>
-                            <div class="modal-footer my-2">
+                            <div class="card-footer my-2 d-flex justify-content-end">
                                 <button class="btn btn-primary" type="submit">[[#{accion.enviar}]]</button>
                             </div>
                         </form>
