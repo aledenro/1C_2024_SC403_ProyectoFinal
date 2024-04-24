@@ -20,6 +20,9 @@ public class Pedido implements Serializable {
     private double total;
     private Long idProducto;
 
+    public Pedido() {
+    }
+
     public Pedido(int idOrden, int cantidad, double total, Long idProducto) {
         this.idOrden = idOrden;
         this.cantidad = cantidad;

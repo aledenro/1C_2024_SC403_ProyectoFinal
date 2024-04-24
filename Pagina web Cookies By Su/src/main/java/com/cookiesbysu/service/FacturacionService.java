@@ -16,4 +16,6 @@ public interface FacturacionService {
     void savePedido(Facturacion pedido);
 
     void deletePedido(Facturacion pedido);
+
+    public void savePedidoActualizado(Facturacion pedido);
 }
