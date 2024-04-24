@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static com.cookiesbysu.service.ItemService.listaItems;
 
 @Service
@@ -33,5 +35,10 @@ public class PedidoServiceImpl implements PedidoService {
         }
 
         return numOrden;
+    }
+
+    @Override
+    public List<Pedido> findByOrden(int idOrden) {
+        return pedidoDao.findByIdOrden(idOrden);
     }
 }

@@ -2,6 +2,7 @@ package com.cookiesbysu.controller;
 
 import com.cookiesbysu.domain.Facturacion;
 import com.cookiesbysu.domain.Item;
+import com.cookiesbysu.domain.Pedido;
 import com.cookiesbysu.domain.Usuario;
 import com.cookiesbysu.service.FacturacionService;
 import com.cookiesbysu.service.ItemService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 @RequestMapping("/facturar")
@@ -79,6 +81,34 @@ public class FacturacionController {
         facturacionService.savePedido(factura);
 
         return "/facturar/pedidoCompleto";
+    }
+
+    @GetMapping("/verPedidos")
+    public String verPedidos(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        Usuario u = usuarioService.getUsuarioPorUsername(userDetails.getUsername());
+        boolean isAdmin = u.getRoles().contains("ROLE_ADMIN");
+        List<Facturacion> listaPedidos = null;
+
+        if (isAdmin) {
+            listaPedidos = facturacionService.getAll();
+        } else {
+            listaPedidos = facturacionService.getPedidosByUser(u.getIdUsuario());
+        }
+
+        model.addAttribute("listadoPedidos", listaPedidos);
+
+        return "/facturar/listado";
+    }
+
+    @GetMapping("/verPedido/{idFacturacion}")
+    public String verPedido(Model model, Facturacion facturacion) {
+        facturacion = facturacionService.getPedido(facturacion);
+        var listaArticulos = pedidoService.findByOrden(facturacion.getIdOrden());
+
+        model.addAttribute("listadoArticulos", listaArticulos);
+        model.addAttribute("facturacion", facturacion);
+
+        return "/facturar/pedido";
     }
 
 }

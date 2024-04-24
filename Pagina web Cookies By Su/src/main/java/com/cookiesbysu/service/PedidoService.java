@@ -7,4 +7,6 @@ import java.util.List;
 public interface PedidoService {
 
     public int savePedido();
+
+    public List<Pedido> findByOrden(int idOrden);
 }

@@ -1,182 +1,188 @@
 <!DOCTYPE html>
 
 <html
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head th:fragment="head">
-        <title>Cookies By Su</title>
-        <meta charset="UTF-8"/>
-        <link rel="shortcut icon" href="" type="image/png"/>
-        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" href="url"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap" rel="stylesheet"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" href="url"/>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-        <script th:src="@{/js/rutinas.js}"></script>
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:fragment="head">
+    <title>Cookies By Su</title>
+    <meta charset="UTF-8"/>
+    <link rel="shortcut icon" href="" type="image/png"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" href="url"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap" rel="stylesheet"/>
+    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" href="url"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/rutinas.js}"></script>
 
-    </head>
-    <body class="d-flex flex-column min-vh-100">
+</head>
+<body class="d-flex flex-column min-vh-100">
 
-        <header th:fragment="header" id="usuario">
-            <nav class="navbar navbar-expand-lg rounded m-2 p-1"
-                 style="background-color: #FAF6F2">
-                <div class="container-fluid">
+<header th:fragment="header" id="usuario">
+    <nav class="navbar navbar-expand-lg rounded m-2 p-1"
+         style="background-color: #FAF6F2">
+        <div class="container-fluid">
 
-                    <button class="navbar-toggler" 
-                            type="button" data-bs-toggle="collapse" 
-                            aria-expanded="false" 
-                            aria-label="Toggle navigation"
-                            data-bs-target="#navbarColapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <button class="navbar-toggler"
+                    type="button" data-bs-toggle="collapse"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    data-bs-target="#navbarColapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <div class="collapse navbar-collapse d-lg-flex" id="navbarColapse">
-                        <a th:href="@{/}" class="navbar-brand col-lg-3 me-0" 
-                           style="font-family: 'Antonio';  font-size: xx-large; color: #dfa0a0">[[#{aplicacion.titulo}]]
-                        </a>
-                        <ul class="navbar-nav col-lg-6 justify-content-lg-center">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/}">[[#{plantilla.catalogo}]]</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/personalizado/verForm}">[[#{plantilla.personalizar}]]</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/nosotros/sobreNosotros}">[[#{plantilla.aboutus}]]</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/contacto/contactenos}">[[#{plantilla.contactenos}]]</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" 
-                                   href="#" 
-                                   data-bs-toggle="dropdown" 
-                                   aria-expanded="false">[[#{plantilla.idioma}]]</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" th:href="@{/(lang=es)}">ES</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
-                                </ul>
-                            </li>
+            <div class="collapse navbar-collapse d-lg-flex" id="navbarColapse">
+                <a th:href="@{/}" class="navbar-brand col-lg-3 me-0"
+                   style="font-family: 'Antonio';  font-size: xx-large; color: #dfa0a0">[[#{aplicacion.titulo}]]
+                </a>
+                <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">[[#{plantilla.catalogo}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/personalizado/verForm}">[[#{plantilla.personalizar}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/nosotros/sobreNosotros}">[[#{plantilla.aboutus}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contacto/contactenos}">[[#{plantilla.contactenos}]]</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/facturar/verPedidos}" sec:authorize="isAuthenticated()">[[#{plantilla.pedidos}]]</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">[[#{plantilla.idioma}]]</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/(lang=es)}">ES</a></li>
+                            <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
                         </ul>
-                        <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-                            <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
-                                <li class="nav-item px-2 text-white my-auto">
-                                    <div id="resultsBlock"></div>
-                                </li>
-                                <li class="nav-item px-2 text-white my-auto">
-                                    <a class="btn btn-sm btn-outline-dark" 
-                                       role="button" 
-                                       th:href="@{/login}">[[#{login.login}]]</a>
-                                </li>
-                            </ul>
-                            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
-                                <li class="nav-item px-2 text-white my-auto">
-                                    <a class="nav-link" th:href="@{/perfil/verPerfil(username=${username})}">
-                                        <span sec:authentication="name">a</span></a>
-                                </li>
-                                <li class="nav-item px-2 text-white my-auto">
-                                    <div id="resultsBlock"></div>
-                                </li>
-                                <li class="nav-item px-2 text-white my-auto">
-                                    <form method="post" th:action="@{/logout}">
-                                        <button class="btn btn-sm btn-outline-dark">[[#{login.logout}]]</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    </li>
+                </ul>
+                <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+                    <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                        <li class="nav-item px-2 text-white my-auto">
+                            <div id="resultsBlock"></div>
+                        </li>
+                        <li class="nav-item px-2 text-white my-auto">
+                            <a class="btn btn-sm btn-outline-dark"
+                               role="button"
+                               th:href="@{/login}">[[#{login.login}]]</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                        <li class="nav-item px-2 text-white my-auto">
+                            <a class="nav-link" th:href="@{/perfil/verPerfil(username=${username})}">
+                                <span sec:authentication="name">a</span></a>
+                        </li>
+                        <li class="nav-item px-2 text-white my-auto">
+                            <div id="resultsBlock"></div>
+                        </li>
+                        <li class="nav-item px-2 text-white my-auto">
+                            <form method="post" th:action="@{/logout}">
+                                <button class="btn btn-sm btn-outline-dark">[[#{login.logout}]]</button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
-        </header>
-
-
-        <section th:fragment="catalogoHero" id="catalogo">
-            <div class="px-4 py-2 my-2 text-center">
-                <h1 class="display-5" style="font-family: 'Antonio'; color:#dfa0a0; font-weight: bold">Galletas</h1>
-                <!--                <div class="col-lg-6 mx-auto">
-                                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-                                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
-                                    </div>
-                                </div>-->
             </div>
-        </section>
+        </div>
+    </nav>
+</header>
 
 
+<section th:fragment="catalogoHero" id="catalogo">
+    <div class="px-4 py-2 my-2 text-center">
+        <h1 class="display-5" style="font-family: 'Antonio'; color:#dfa0a0; font-weight: bold">Galletas</h1>
+        <!--                <div class="col-lg-6 mx-auto">
+                            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
+                                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+                            </div>
+                        </div>-->
+    </div>
+</section>
 
-        <section th:fragment="productosDisplay" id="productos">
-            <div class="album py-3">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" th:if="${productos != null and !productos.empty}">
-                        <!--                        <span th:each="i : ${#numbers.sequence(0, 3)}"></span>-->
-                        <div class="col" th:each="producto : ${productos}">
-                            <div class="card shadow-sm">
-                                <a class="link-dark text-decoration-none" th:href="@{/producto/ver/}+${producto.idProducto}">
-                                    <img th:href="@{/producto/ver/}+${producto.idProducto}" th:src="@{${producto.rutaImagen}}" class="card-img-top" width="100%"/>
-                                </a>
-                                <div class="card-body">
-                                    <a class="text-decoration-none link-dark" th:href="@{/producto/ver/}+${producto.idProducto}">
-                                        <h5 class="card-title text-center">[[${producto.nombreProducto}]]</h5>
-                                    </a>
-                                    <p class="card-text">[[${producto.descripcion}]]</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <form action="">
-                                                <input type="hidden" name="idProducto" th:value="${producto.idProducto}" />
-                                                <button type="button"
-                                                        class="btn btn-sm btn-outline-dark" id="addCart"
-                                                        name="addCart"
-                                                        onclick="addCard(this.form)"
-                                                        ><i class="fa-solid fa-cart-plus"></i> [[#{producto.agregar}]]</button>
-                                            </form>
-                                        </div>
-                                        <small class="text-muted">₡[[${producto.precio}]]</small>
-                                    </div>
+
+<section th:fragment="productosDisplay" id="productos">
+    <div class="album py-3">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
+                 th:if="${productos != null and !productos.empty}">
+                <!--                        <span th:each="i : ${#numbers.sequence(0, 3)}"></span>-->
+                <div class="col" th:each="producto : ${productos}">
+                    <div class="card shadow-sm">
+                        <a class="link-dark text-decoration-none" th:href="@{/producto/ver/}+${producto.idProducto}">
+                            <img th:href="@{/producto/ver/}+${producto.idProducto}" th:src="@{${producto.rutaImagen}}"
+                                 class="card-img-top" width="100%"/>
+                        </a>
+                        <div class="card-body">
+                            <a class="text-decoration-none link-dark"
+                               th:href="@{/producto/ver/}+${producto.idProducto}">
+                                <h5 class="card-title text-center">[[${producto.nombreProducto}]]</h5>
+                            </a>
+                            <p class="card-text">[[${producto.descripcion}]]</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="">
+                                        <input type="hidden" name="idProducto" th:value="${producto.idProducto}"/>
+                                        <button type="button"
+                                                class="btn btn-sm btn-outline-dark" id="addCart"
+                                                name="addCart"
+                                                onclick="addCard(this.form)"
+                                        ><i class="fa-solid fa-cart-plus"></i> [[#{producto.agregar}]]
+                                        </button>
+                                    </form>
                                 </div>
+                                <small class="text-muted">₡[[${producto.precio}]]</small>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="text-center p-2"
-                        th:if="${productos == null or productos.empty}">
-                        <span>[[#{lista.vacia}]]</span>
-                    </div>
                 </div>
             </div>
-        </section>
+            <div
+                    class="text-center p-2"
+                    th:if="${productos == null or productos.empty}">
+                <span>[[#{lista.vacia}]]</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <section th:fragment="botonesAgregar" class="mb-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <a th:href="@{/producto/agregar}">
-                            <button type="button" class="btn btn-primary btn-block">
-                                <i class="fas fa-plus"></i> [[#{producto.agregar}]]
-                            </button>
-                        </a>
-                    </div>
-                </div>
+<section th:fragment="botonesAgregar" class="mb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a th:href="@{/producto/agregar}">
+                    <button type="button" class="btn btn-primary btn-block">
+                        <i class="fas fa-plus"></i> [[#{producto.agregar}]]
+                    </button>
+                </a>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <footer th:fragment="footer" class="flex-shrink-0 py-4 mt-auto" style="color: #dfa0a0; background-color: #f5e3e1">
-            <div class="container text-center">
-                <div class="col">
-                    <p>&COPY; [[#{plantilla.derechos}]]</p>
-                    <div class="text-center">
-                        <a href="https://www.facebook.com/profile.php?id=100091903178022&sk=about" 
-                           class="fs-5 fw-bold text-decoration-none" 
-                           style="color: #dfa0a0"><i class="fa-brands fa-square-facebook"></i></a>
-                        <a href="https://www.instagram.com/cookiesby_su?igsh=b203Z3RsYnk3MWY3" 
-                           class="fs-5 fw-bold text-decoration-none"
-                           style="color: #dfa0a0"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
+<footer th:fragment="footer" class="flex-shrink-0 py-4 mt-auto" style="color: #dfa0a0; background-color: #f5e3e1">
+    <div class="container text-center">
+        <div class="col">
+            <p>&COPY; [[#{plantilla.derechos}]]</p>
+            <div class="text-center">
+                <a href="https://www.facebook.com/profile.php?id=100091903178022&sk=about"
+                   class="fs-5 fw-bold text-decoration-none"
+                   style="color: #dfa0a0"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="https://www.instagram.com/cookiesby_su?igsh=b203Z3RsYnk3MWY3"
+                   class="fs-5 fw-bold text-decoration-none"
+                   style="color: #dfa0a0"><i class="fa-brands fa-instagram"></i></a>
             </div>
-        </footer>
-    </body>
+        </div>
+    </div>
+</footer>
+</body>
 </html>
