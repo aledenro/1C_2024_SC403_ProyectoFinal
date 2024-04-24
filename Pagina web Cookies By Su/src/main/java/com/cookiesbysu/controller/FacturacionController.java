@@ -1,9 +1,6 @@
 package com.cookiesbysu.controller;
 
-import com.cookiesbysu.domain.Facturacion;
-import com.cookiesbysu.domain.Item;
-import com.cookiesbysu.domain.Pedido;
-import com.cookiesbysu.domain.Usuario;
+import com.cookiesbysu.domain.*;
 import com.cookiesbysu.service.FacturacionService;
 import com.cookiesbysu.service.ItemService;
 import com.cookiesbysu.service.PedidoService;
@@ -86,8 +83,16 @@ public class FacturacionController {
     @GetMapping("/verPedidos")
     public String verPedidos(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         Usuario u = usuarioService.getUsuarioPorUsername(userDetails.getUsername());
-        boolean isAdmin = u.getRoles().contains("ROLE_ADMIN");
+        var roles = u.getRoles();
+        boolean isAdmin = false;
         List<Facturacion> listaPedidos = null;
+
+        for (Rol r : roles) {
+            if (r.getNombreRol().equals("ROLE_ADMIN")) {
+                isAdmin = true;
+                break;
+            }
+        }
 
         if (isAdmin) {
             listaPedidos = facturacionService.getAll();
@@ -100,7 +105,7 @@ public class FacturacionController {
         return "/facturar/listado";
     }
 
-    @GetMapping("/verPedido/{idFacturacion}")
+    @GetMapping("/verOrden/{idFacturacion}")
     public String verPedido(Model model, Facturacion facturacion) {
         facturacion = facturacionService.getPedido(facturacion);
         var listaArticulos = pedidoService.findByOrden(facturacion.getIdOrden());
@@ -111,4 +116,10 @@ public class FacturacionController {
         return "/facturar/pedido";
     }
 
+    @PostMapping("/actualizar")
+    public String actualizar(Facturacion factura) {
+        facturacionService.savePedido(factura);
+
+        return "redirect:/facturar/verPedidos";
+    }
 }

@@ -58,6 +58,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 create table pedido(
 	id_pedido int not null auto_increment,
+    id_orden int not null,
     id_producto int not null,
     cantidad int not null,
     total double not null,
@@ -70,8 +71,8 @@ DEFAULT CHARACTER SET = utf8mb4;
 create table facturacion(
 	id_facturacion int not null auto_increment,
     id_usuario int not null,
-    id_pedido int not null,
-    direccion_detallada varchar(350) not null,
+    id_orden int not null,
+    direccion_detallada varchar(350),
 	fecha_pedido date not null,
     fecha_entrega date not null,
     forma_pago varchar(50) not null,
@@ -81,8 +82,7 @@ create table facturacion(
     iva double,
     total_iva double,
     primary key(id_facturacion),
-    foreign key(id_usuario) references usuario(id_usuario),
-    foreign key(id_pedido) references pedido(id_pedido)
+    foreign key(id_usuario) references usuario(id_usuario)
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;

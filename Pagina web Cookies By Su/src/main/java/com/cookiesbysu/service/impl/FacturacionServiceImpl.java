@@ -48,4 +48,11 @@ public class FacturacionServiceImpl implements FacturacionService {
     public void deletePedido(Facturacion pedido) {
         facturacionDao.delete(pedido);
     }
+
+    @Override
+    @Transactional
+    public void savePedidoActualizado(Facturacion pedido) {
+        facturacionDao.save(pedido);
+        listaItems.clear();
+    }
 }
